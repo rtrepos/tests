@@ -10,7 +10,7 @@ add_executable(main main.cpp)
 target_link_libraries(main mydll)
 
 ##
-## install hpp
+## install exe
 ##   
 
 install(TARGETS main DESTINATION ${CMAKE_INSTALL_PREFIX}/exe)

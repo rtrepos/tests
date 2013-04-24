@@ -13,12 +13,12 @@ echo Avec compile
   
 mkdir %PP_HOME%\buildwin
 mkdir %PP_HOME%\buildwin\pmain
+mkdir %PP_HOME%\buildwin\pmainCorr
+mkdir %PP_HOME%\buildwin\pmainCorrPlugin
 mkdir %PP_HOME%\buildwin\pdll1
 mkdir %PP_HOME%\buildwin\pdll2
+
 cd %PP_HOME%\buildwin\pdll1
-
-echo %PATH%
-
 cmake -G "MinGW Makefiles" -DCMAKE_INSTALL_PREFIX=%PP_HOME%/installwin %PP_HOME%\pdll1
 mingw32-make install 
 cd %PP_HOME%\buildwin\pdll2
@@ -27,9 +27,14 @@ mingw32-make install
 cd %PP_HOME%\buildwin\pmain
 cmake -G "MinGW Makefiles" -DCMAKE_INSTALL_PREFIX=%PP_HOME%/installwin %PP_HOME%\pmain
 mingw32-make install
+cd %PP_HOME%\buildwin\pmainCorrPlugin
+cmake -G "MinGW Makefiles" -DCMAKE_INSTALL_PREFIX=%PP_HOME%/installwin %PP_HOME%\pmainCorrPlugin
+mingw32-make install
+cd %PP_HOME%\buildwin\pmainCorr
+cmake -G "MinGW Makefiles" -DCMAKE_INSTALL_PREFIX=%PP_HOME%/installwin %PP_HOME%\pmainCorr
+mingw32-make install
+
 cd %OLD_CD%
-
-
 set OLD_PATH=%PATH% 
 
 if %1% == ERR goto error  
@@ -42,6 +47,8 @@ goto end
 :ok   
 set PATH=%PP_HOME%\installwin\lib;%PATH%
 goto end
+
+
 
 :end
 

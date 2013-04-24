@@ -1,5 +1,5 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
-PROJECT(mingw_libs_conflict_pmain CXX C)
+PROJECT(mingw_libs_conflict_pmainCorr CXX C)
 SET (CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
 ENABLE_TESTING()
 

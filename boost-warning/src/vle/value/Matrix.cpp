@@ -70,17 +70,6 @@ void Matrix::addRow()
     ++m_nbrow;
 }
 
-void Matrix::moveLastCell()
-{
-    ++m_lastX;
-    if (m_lastX >= columns()) {
-        m_lastX = 0;
-        ++m_lastY;
-        if (m_lastY >= rows()) {
-            m_lastY = 0;
-        }
-    }
-}
 
 }} // namespace vle value
 

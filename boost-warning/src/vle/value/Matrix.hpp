@@ -182,92 +182,9 @@ public:
     }
 
 
-    /**
-     * @brief Move the last cell to the nearest Cell in column or row. If
-     * the last cell equal the number of column, column is set to 0, row to
-     * row + 1. If the row equal the number of row, row is set to 0.
-     */
-    void moveLastCell();
 
-    /**
-     * @brief Get the correct subset of the Matrix define in:
-     * [0, columns()][0, rows()]. Not the global Matrix:
-     * [0, matrix.shape()[0][0, matrix.shape()[1]];
-     * @return A view of the data.
-     */
-    inline MatrixView value()
-    { return m_matrix[m_indices [Range(0, m_nbcol)][Range(0, m_nbrow)]]; }
 
-    /**
-     * @brief Get the correct subset of the Matrix define in:
-     * [0, columns()][0, rows()]. Not the global Matrix:
-     * [0, matrix.shape()[0][0, matrix.shape()[1]];
-     * @return A view of the data.
-     */
-    inline ConstMatrixView value() const
-    { return m_matrix[m_indices [Range(0, m_nbcol)][Range(0, m_nbrow)]]; }
 
-    /**
-     * @brief Get the correct subset of the Matrx define in:
-     * [0, columns()][0, rows()]. Not the global Matrix:
-     * [0, matrix.shape()[0][0, matrix.shape()[1]];
-     * @return A constant view of the data.
-     */
-    inline ConstMatrixView getConstValue() const
-    { return m_matrix[m_indices [Range(0, m_nbcol)][Range(0, m_nbrow)]]; }
-
-    /**
-     * @brief Get a constant reference to the complete matrix.
-     * @return A constant reference to the complete matrix.
-     */
-    inline const MatrixValue& matrix() const
-    { return m_matrix; }
-
-    /**
-     * @brief Return the number of valid column data.
-     * @return the number of valid column.
-     */
-    inline size_type columns() const
-    { return m_nbcol; }
-
-    /**
-     * @brief Return a vector from the Matrix.
-     * @param index the index of the vector.
-     * @return A view on the column of the Matrix.
-     */
-    inline VectorView column(index index)
-    { return m_matrix[boost::indices[index][Range(0, m_nbrow)]]; }
-
-    /**
-     * @brief Return a vector from the Matrix.
-     * @param index the index of the vector.
-     * @return A view on the column of the Matrix.
-     */
-    inline ConstVectorView column(index index) const
-    { return m_matrix[boost::indices[index][Range(0, m_nbrow)]]; }
-
-    /**
-     * @brief Return the number of valid row data.
-     * @return the number of valid row.
-     */
-    inline size_type rows() const
-    { return m_nbrow; }
-
-    /**
-     * @brief Return a vector from the Matrix.
-     * @param index the index of the vector.
-     * @return A view on the row of the Matrix.
-     */
-    inline VectorView row(index index)
-    { return m_matrix[boost::indices[Range(0, m_nbcol)][index]]; }
-
-    /**
-     * @brief Return a constant vector from the Matrix.
-     * @param index the index of the vector.
-     * @return A constant view on the row of the Matrix.
-     */
-    inline ConstVectorView row(index index) const
-    { return m_matrix[boost::indices[Range(0, m_nbcol)][index]]; }
 
 private:
     MatrixValue m_matrix; /// @brief to store the values.

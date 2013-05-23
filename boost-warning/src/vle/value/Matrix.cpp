@@ -50,25 +50,6 @@ void Matrix::resize(const size_type& columns, const size_type& rows)
     m_matrix.resize(m_extents[columns][rows]);
 }
 
-void Matrix::addColumn()
-{
-    if (m_nbcol + 1 >= m_matrix.shape()[0]) {
-        m_matrix.resize(
-            m_extents[m_matrix.shape()[0] + m_stepcol]
-            [m_matrix.shape()[1]]);
-    }
-    ++m_nbcol;
-}
-
-void Matrix::addRow()
-{
-    if (m_nbrow + 1 >= m_matrix.shape()[1]) {
-        m_matrix.resize(
-            m_extents[m_matrix.shape()[0]]
-            [m_matrix.shape()[1] + m_steprow]);
-    }
-    ++m_nbrow;
-}
 
 
 }} // namespace vle value

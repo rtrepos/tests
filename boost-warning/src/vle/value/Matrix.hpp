@@ -84,102 +84,10 @@ public:
 
     }
 
-    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-      * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-
-
-
-    /**
-     * @brief Resize the current matrix.
-     * @param columns The number of columns of the matrix.
-     * @param rows The number of rows of the matrix.
-     * @throw utils::ArgError if data are loss.
-     */
     void resize(const size_type& columns, const size_type& rows);
 
-    /**
-     * @brief Add a new column to the Matrix.
-     */
-    void addColumn();
-
-    /**
-     * @brief Add a new row to the Matrix.
-     */
-    void addRow();
 
 
-
-
-    /**
-     * @brief Set the cell at (column, row) to the specified value. Be careful,
-     * the value is managed by the Matrix.
-     * @param column index of the cell's column.
-     * @param row index of the cell's row.
-     * @param value the value to set.
-     */
-    void set(const size_type& column, const size_type& row,
-             value::Value* val)
-    {
-        delete m_matrix[column][row];
-        m_matrix[column][row] = val;
-    }
-
-    /**
-     * @brief Set the cell at (column, row) to the specified value.
-     * @param column index of the cell's column.
-     * @param row index of the cell's row.
-     * @param value the value to set.
-     */
-    void set(const size_type& column, const size_type& row,
-             const value::Value* val)
-    {
-        delete m_matrix[column][row];
-        if (val) {
-
-        } else {
-            m_matrix[column][row] = 0;
-        }
-    }
-
-    /**
-     * @brief Set the cell at (column, row) to the specified value.
-     * The value is cloned.
-     * @param column index of the cell's column.
-     * @param row index of the cell's row.
-     * @param value the value to set.
-     */
-    void set(const size_type& column, const size_type& row,
-             const value::Value& val)
-    {
-        delete m_matrix[column][row];
-    }
-
-    /**
-     * @brief Get a pointer from a cell of the matrix.
-     * @param column The column.
-     * @param row The row.
-     * @return A constant pointer to the Value.
-     * @throw utils::ArgError if bad access to the matrix, in debug mode only.
-     */
-    const Value* get(const size_type& column, const size_type& row) const
-    {
-
-
-        return m_matrix[column][row];
-    }
-
-    /**
-     * @brief Get a pointer from a cell of the matrix.
-     * @param column The column.
-     * @param row The row.
-     * @return A pointer to the Value.
-     * @throw utils::ArgError if bad access to the matrix, in debug mode only.
-     */
-    Value* get(const size_type& column, const size_type& row)
-    {
-        return m_matrix[column][row];
-    }
 
 
 

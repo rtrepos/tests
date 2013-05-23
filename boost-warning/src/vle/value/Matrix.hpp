@@ -75,175 +75,20 @@ public:
     typedef MatrixValue::iterator iterator;
     typedef MatrixValue::const_iterator const_iterator;
 
-    /**
-     * @brief Build an empty Matrix.
-     */
-    Matrix()
-        : m_matrix(), m_nbcol(0), m_nbrow(0), m_stepcol(1), m_steprow(1),
-        m_lastX(0), m_lastY(0)
-    {}
-
-    /**
-     * @brief Build an empty matrix of value of size [colums][row].
-     * @param columns the initial number of columns.
-     * @param rows the initial number of rows.
-     * @param resizeColumns the number of columns to add when resize the matrix.
-     * @param resizeRows the number of rows to add when resize the matrix.
-     */
-    Matrix(index columns, index rows, index resizeColumns, index resizeRows)
-        : m_matrix(m_extents[columns][rows]), m_nbcol(columns), m_nbrow(rows),
-        m_stepcol(resizeColumns), m_steprow(resizeRows), m_lastX(0), m_lastY(0)
-    {}
-
-    /**
-     * @brief Build an empty buffered matrix of value of size [colums][rows] in
-     * a matrix of [columnmax][rowmax].
-     * @param columns the initial number of columns.
-     * @param rows the initial number of rows.
-     * @param columnmax The max number of columns.
-     * @param rowmax The max number of rows.
-     * @param resizeColumns the number of columns to add when resize the matrix.
-     * @param resizeRow the number of rows to add when resize the matrix.
-     * @throw utils::ArgError if columns > columnmax or if rows > rowmax.
-     */
     Matrix(index columns, index rows, index columnmax, index rowmax,
            index resizeColumns, index resizeRow);
 
-    /**
-     * @brief Build a new Matrix, all the value::Value from the
-     * Matrix are cloned.
-     * @param m the Matrix to copy.
-     */
-    Matrix(const Matrix& m);
 
-    /**
-     * @brief Delete all data.
-     */
     virtual ~Matrix()
-    { clear(); }
+    {
 
-    /**
-     * @brief Build a new Matrix.
-     * @param columns Define the number of columns for the buffer.
-     * @param rows Define the number of rows for the buffer.
-     * @param resizeColumns Number of columns when resize buffer.
-     * @param resizeRows Number of row when resize buffer.
-     * @return A new allocated Matrix.
-     */
-    static Matrix* create(index columns = 10,
-                          index rows = 10,
-                          index resizeColumns = 10,
-                          index resizeRows = 10)
-    { return new Matrix(columns, rows, resizeColumns, resizeRows); }
-
-    /**
-     * @brief Build a new Matrix with a specified views.
-     * @param columns Define the number of columns for the buffer.
-     * @param rows Define the number of rows for the buffer.
-     * @param columnmax The max number of columns.
-     * @param rowmax The max number of rows.
-     * @param resizeColumns Number of columns when resize buffer.
-     * @param resizeRows Number of row when resize buffer.
-     * @return A new allocated Matrix.
-     */
-    static Matrix* create(index columns,
-                          index rows,
-                          index columnmax,
-                          index rowmax,
-                          index resizeColumns,
-                          index resizeRows)
-    { return new Matrix(columns, rows, columnmax, rowmax, resizeColumns,
-                        resizeRows); }
+    }
 
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
       * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
-    /**
-     * @brief Clone the Matrix and all value::Value.
-     * @return A new Matrix.
-     */
-    virtual Value* clone() const
-    { return new Matrix(*this); }
 
-    /**
-     * @brief Get the type of this class.
-     * @return Value::MATRIX.
-     */
-    inline virtual Value::type getType() const
-    { return Value::MATRIX; }
-
-    /**
-     * @brief Push all Value from the MatrixValue, recursively and space
-     * separated.
-     * @code
-     * 1 2 3 4 5 NA 7
-     * 8 9 1 2 3  4 5
-     * @endcode
-     * @param out The output stream.
-     */
-    virtual void writeFile(std::ostream& out) const;
-
-    /**
-     * @brief Push all Value from the MatrixValue, recursively and space
-     * separated.
-     * @code
-     * 1 2 3 4 5 NA 7
-     * 8 tutu 1 2 3  4 5
-     * @endcode
-     * @param out The output stream.
-     */
-    virtual void writeString(std::ostream& out) const;
-
-    /**
-     * @brief Push all Value from the MatrixValue recursively in an XML
-     * representation.
-     * @code
-     * <matrix rows="2" columns="7" columnmax="100" rowmax="2000"
-     *         columnstep="1" rowstep="12">
-     *  <integer>1</integer>
-     *  <integer>2</integer>
-     *  <integer>3</integer>
-     *  <integer>4</integer>
-     *  <integer>5</integer>
-     *  <null />
-     *  <integer>7</integer>
-     *  <string>tutu</string>
-     *  <integer>9</integer>
-     *  <integer>1</integer>
-     *  <integer>2</integer>
-     *  <integer>3</integer>
-     *  <integer>4</integer>
-     *  <integer>5</integer>
-     * </matrix>
-     * @endcode
-     * @param out The output stream.
-     */
-    virtual void writeXml(std::ostream& out) const;
-
-    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-      * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-
-    iterator begin()
-    { return m_matrix.begin(); }
-
-    iterator end()
-    { return m_matrix.end(); }
-
-    const_iterator begin() const
-    { return m_matrix.begin(); }
-
-    const_iterator end() const
-    { return m_matrix.end(); }
-
-    size_type size() const
-    { return columns() * rows() ; }
-
-    /**
-     * @brief Delete all element from the matrix. All value are deleted.
-     */
-    void clear();
 
     /**
      * @brief Resize the current matrix.
@@ -263,43 +108,8 @@ public:
      */
     void addRow();
 
-    /**
-     * @brief Set the cell at (column, row) to the specified value. Be careful,
-     * the value is managed by the Matrix.
-     * @param column index of the cell's column.
-     * @param row index of the cell's row.
-     * @param value the value to set.
-     */
-    void add(const size_type& column, const size_type& row,
-             value::Value* val)
-    {
-        set(column, row, val);
-    }
 
-    /**
-     * @brief Set the cell at (column, row) to the specified value.
-     * @param column index of the cell's column.
-     * @param row index of the cell's row.
-     * @param value the value to set.
-     */
-    void add(const size_type& column, const size_type& row,
-             const value::Value* val)
-    {
-        set(column, row, val);
-    }
 
-    /**
-     * @brief Set the cell at (column, row) to the specified value.
-     * The value is cloned.
-     * @param column index of the cell's column.
-     * @param row index of the cell's row.
-     * @param value the value to set.
-     */
-    void add(const size_type& column, const size_type& row,
-             const value::Value& val)
-    {
-        set(column, row, val);
-    }
 
     /**
      * @brief Set the cell at (column, row) to the specified value. Be careful,
@@ -326,7 +136,7 @@ public:
     {
         delete m_matrix[column][row];
         if (val) {
-            m_matrix[column][row] = val->clone();
+
         } else {
             m_matrix[column][row] = 0;
         }
@@ -343,7 +153,6 @@ public:
              const value::Value& val)
     {
         delete m_matrix[column][row];
-        m_matrix[column][row] = val.clone();
     }
 
     /**
@@ -381,26 +190,6 @@ public:
         return m_matrix[column][row];
     }
 
-    /**
-     * @brief Set the last cell to the specificed value. The value is
-     * cloned.
-     * @param val the value to clone and assign.
-     */
-    void addToLastCell(const value::Value& val)
-    {
-        add(m_lastX, m_lastY, val);
-    }
-
-    /**
-     * @brief Set the last cell to the specificed value.
-     * Be careful, the value is managed by the Matrix.
-     * @param val the value to assign. Be carefull, the value is managed by
-     * the Matrix class.
-     */
-    void addToLastCell(value::Value* val)
-    {
-        add(m_lastX, m_lastY, val);
-    }
 
     /**
      * @brief Move the last cell to the nearest Cell in column or row. If

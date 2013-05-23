@@ -43,13 +43,7 @@ namespace vle { namespace value {
     class VLE_API Value
     {
     public:
-#ifndef NDEBUG
-        static unsigned long int allocated;
-        static unsigned long int deallocated;
-#endif
 
-        enum type {MAP,
-            MATRIX };
 
 	/**
 	 * @brief Default constructor.
@@ -60,9 +54,6 @@ namespace vle { namespace value {
 	 */
 	Value()
         {
-#ifndef NDEBUG
-            Value::allocated++;
-#endif
         }
 
         /**
@@ -71,9 +62,6 @@ namespace vle { namespace value {
          */
         Value(const Value& /* value */)
         {
-#ifndef NDEBUG
-            Value::allocated++;
-#endif
         }
 
         /**
@@ -81,83 +69,12 @@ namespace vle { namespace value {
 	 */
 	virtual ~Value()
         {
-#ifndef NDEBUG
-            Value::deallocated++;
-#endif
         }
 
         ///
         //// Abstract functions
         ///
 
-	/**
-	 * @brief Pure virtual clone function.
-	 * @return Clone of instantiate object.
-	 */
-        virtual Value* clone() const = 0;
-
-	/**
-	 * @brief Return the type of value. The type is one of the 'type'
-	 * enumeration ie. BOOL, INTEGER, DOUBLE, STRING, SET, MAP.
-	 * @return the type of value object.
-	 */
-	virtual Value::type getType() const = 0;
-
-        ///
-        ////
-        ///
-
-        /**
-         * @brief Build a file representation of this class. This function
-         * call the virtual function Value::writeString to build the string.
-         * @return A string representation of this class.
-         */
-        std::string writeToFile() const;
-
-        /**
-         * @brief Build a string representation of this class. This function
-         * call the virtual function Value::writeString to build the string.
-         * @return A string representation of this class.
-         */
-        std::string writeToString() const;
-
-        /**
-         * @brief Build an xml representation of this class. This function
-         * call the virtual function Value::writeString to build the string.
-         * @return A string representation of this class.
-         */
-        std::string writeToXml() const;
-
-
-	inline bool isMap() const
-	{ return getType() == Value::MAP; }
-
-
-
-	inline bool isMatrix() const
-	{ return getType() == Value::MATRIX; }
-
-        /**
-         * @brief Check if the Value is a composite value, ie., a Map, a Set or
-         * a Matrix.
-         * @param val The Value to check.
-         * @return True if the Value is a Map, a Set or a Matrix.
-         */
-        inline static bool isComposite(const Value* val)
-        {
-            switch (val->getType()) {
-            case Value::MAP:
-            case Value::MATRIX:
-                return true;
-            default:
-                return false;
-            }
-        }
-
-
-
-    private:
-        Value& operator=(const Value& /* value */) { return *this; }
     };
 
 

@@ -43,43 +43,6 @@ Matrix::Matrix(index columns, index rows, index columnmax, index rowmax, index
     }
 }
 
-Matrix::Matrix(const Matrix& m)
-    : Value(m), m_nbcol(m.m_nbcol), m_nbrow(m.m_nbrow), m_stepcol(m.m_stepcol),
-    m_steprow(m.m_steprow), m_lastX(0), m_lastY(0)
-{
-    m_matrix.resize(m_extents[m_nbcol][m_nbrow]);
-
-    for (size_type i = 0; i < m_nbcol; ++i) {
-        for (size_type j = 0; j < m_nbrow; ++j) {
-            if (m.m_matrix[i][j]) {
-                m_matrix[i][j] = m.m_matrix[i][j]->clone();
-            } else {
-                m_matrix[i][j] = 0;
-            }
-        }
-    }
-}
-
-void Matrix::clear()
-{
-    for (size_type j = 0; j < m_nbrow; ++j) {
-        for (size_type i = 0; i < m_nbcol; ++i) {
-            delete m_matrix[i][j];
-            m_matrix[i][j] = 0;
-        }
-    }
-
-    m_lastX = 0;
-    m_lastY = 0;
-}
-
-Matrix& Matrix::addMatrix(const size_type& column, const size_type& row)
-{
-    value::Matrix* tmp = new value::Matrix();
-    add(column, row, tmp);
-    return *tmp;
-}
-
 
 
 void Matrix::resize(const size_type& columns, const size_type& rows)

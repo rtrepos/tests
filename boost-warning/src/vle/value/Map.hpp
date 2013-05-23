@@ -277,8 +277,7 @@ public:
         const_iterator it = find(name);
 
         if (it == end()) {
-            throw utils::ArgError(fmt(_(
-                        "Map: the key '%1%' does not exist")) % name);
+            throw 1;
         }
 
         return (*it).second;
@@ -295,8 +294,7 @@ public:
         iterator it = find(name);
 
         if (it == end()) {
-            throw utils::ArgError(fmt(_(
-                        "Map: the key '%1%' does not exist")) % name);
+            throw 1;
         }
 
         return (*it).second;

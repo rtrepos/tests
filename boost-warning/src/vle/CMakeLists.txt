@@ -9,11 +9,11 @@ link_directories(${VLEDEPS_LIBRARY_DIRS} ${Boost_LIBRARY_DIRS})
 # Explore subfolders to find source code, plug-ins etc.
 #
 
-add_subdirectory(utils)
+#add_subdirectory(utils)
 add_subdirectory(value)
 
 
-add_sources(vlelib DllDefines.hpp vle.hpp vle.cpp)
+add_sources(vlelib DllDefines.hpp)
 get_property(vlelib_SRCS GLOBAL PROPERTY vlelib_SRCS)
 
 #

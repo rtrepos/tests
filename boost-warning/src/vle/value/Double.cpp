@@ -27,6 +27,7 @@
 
 #include <vle/value/Double.hpp>
 #include <iomanip>
+#include <limits>
 
 namespace vle { namespace value {
 

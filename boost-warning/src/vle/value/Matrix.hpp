@@ -365,7 +365,7 @@ public:
     {
 #ifndef NDEBUG
         if (not (column < m_nbcol and row <= m_nbrow)) {
-            throw utils::ArgError(_("Matrix: bad access"));
+            throw 1;
         }
 #endif
 
@@ -383,7 +383,7 @@ public:
     {
 #ifndef NDEBUG
         if (not (column < m_nbcol and row <= m_nbrow)) {
-            throw utils::ArgError(_("Matrix: bad access"));
+            throw 1;
         }
 #endif
         return m_matrix[column][row];

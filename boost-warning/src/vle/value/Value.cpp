@@ -70,7 +70,7 @@ std::string Value::writeToXml() const
 const Boolean& Value::toBoolean() const
 {
     if (not isBoolean()) {
-        throw utils::CastError(_("Value is not a boolean"));
+        throw 1;
     }
     return static_cast < const Boolean& >(*this);
 }
@@ -78,7 +78,7 @@ const Boolean& Value::toBoolean() const
 const Integer& Value::toInteger() const
 {
     if (not isInteger()) {
-        throw utils::CastError(_("Value is not an integer"));
+        throw 1;
     }
     return static_cast < const Integer& >(*this);
 }
@@ -86,7 +86,7 @@ const Integer& Value::toInteger() const
 const Double& Value::toDouble() const
 {
     if (not isDouble()) {
-        throw utils::CastError(_("Value is not a double"));
+        throw 1;
     }
     return static_cast < const Double& >(*this);
 }
@@ -94,7 +94,7 @@ const Double& Value::toDouble() const
 const String& Value::toString() const
 {
     if (not isString()) {
-        throw utils::CastError(_("Value is not a string"));
+        throw 1;
     }
     return static_cast < const String& >(*this);
 }
@@ -102,7 +102,7 @@ const String& Value::toString() const
 const Set& Value::toSet() const
 {
     if (not isSet()) {
-        throw utils::CastError(_("Value is not a set"));
+        throw 1;
     }
     return static_cast < const Set& >(*this);
 }
@@ -110,7 +110,7 @@ const Set& Value::toSet() const
 const Map& Value::toMap() const
 {
     if (not isMap()) {
-        throw utils::CastError(_("Value is not a map"));
+        throw 1;
     }
     return static_cast < const Map& >(*this);
 }
@@ -118,7 +118,7 @@ const Map& Value::toMap() const
 const Tuple& Value::toTuple() const
 {
     if (not isTuple()) {
-        throw utils::CastError(_("Value is not a tuple"));
+        throw 1;
     }
     return static_cast < const Tuple& >(*this);
 }
@@ -126,7 +126,7 @@ const Tuple& Value::toTuple() const
 const Table& Value::toTable() const
 {
     if (not isTable()) {
-        throw utils::CastError(_("Value is not a table"));
+        throw 1;
     }
     return static_cast < const Table& >(*this);
 }
@@ -134,7 +134,7 @@ const Table& Value::toTable() const
 const Xml& Value::toXml() const
 {
     if (not isXml()) {
-        throw utils::CastError(_("Value is not an xml"));
+        throw 1;
     }
     return static_cast < const Xml& >(*this);
 }
@@ -142,7 +142,7 @@ const Xml& Value::toXml() const
 const Null& Value::toNull() const
 {
     if (not isNull()) {
-        throw utils::CastError(_("Value is not a null"));
+        throw 1;
     }
     return static_cast < const Null& >(*this);
 }
@@ -150,7 +150,7 @@ const Null& Value::toNull() const
 const Matrix& Value::toMatrix() const
 {
     if (not isMatrix()) {
-        throw utils::CastError(_("Value is not a matrix"));
+        throw 1;
     }
     return static_cast < const Matrix& >(*this);
 }
@@ -158,7 +158,7 @@ const Matrix& Value::toMatrix() const
 Boolean& Value::toBoolean()
 {
     if (not isBoolean()) {
-        throw utils::CastError(_("Value is not a boolean"));
+        throw 1;
     }
     return static_cast < Boolean& >(*this);
 }
@@ -166,7 +166,7 @@ Boolean& Value::toBoolean()
 Integer& Value::toInteger()
 {
     if (not isInteger()) {
-        throw utils::CastError(_("Value is is not an integer"));
+        throw 1;
     }
     return static_cast < Integer& >(*this);
 }
@@ -174,7 +174,7 @@ Integer& Value::toInteger()
 Double& Value::toDouble()
 {
     if (not isDouble()) {
-        throw utils::CastError(_("Value is not a double"));
+        throw 1;
     }
     return static_cast < Double& >(*this);
 }
@@ -182,7 +182,7 @@ Double& Value::toDouble()
 String& Value::toString()
 {
     if (not isString()) {
-        throw utils::CastError(_("Value is not a string"));
+        throw 1;
     }
     return static_cast < String& >(*this);
 }
@@ -190,7 +190,7 @@ String& Value::toString()
 Set& Value::toSet()
 {
     if (not isSet()) {
-        throw utils::CastError(_("Value is not a set"));
+        throw 1;
     }
     return static_cast < Set& >(*this);
 }
@@ -198,7 +198,7 @@ Set& Value::toSet()
 Map& Value::toMap()
 {
     if (not isMap()) {
-        throw utils::CastError(_("Value is not a map"));
+        throw 1;
     }
     return static_cast < Map& >(*this);
 }
@@ -206,7 +206,7 @@ Map& Value::toMap()
 Tuple& Value::toTuple()
 {
     if (not isTuple()) {
-        throw utils::CastError(_("Value is not a tuple"));
+        throw 1;
     }
     return static_cast < Tuple& >(*this);
 }
@@ -214,7 +214,7 @@ Tuple& Value::toTuple()
 Table& Value::toTable()
 {
     if (not isTable()) {
-        throw utils::CastError(_("Value is not a table"));
+        throw 1;
     }
     return static_cast < Table& >(*this);
 }
@@ -222,7 +222,7 @@ Table& Value::toTable()
 Xml& Value::toXml()
 {
     if (not isXml()) {
-        throw utils::CastError(_("Value is not an xml"));
+        throw 1;
     }
     return static_cast < Xml& >(*this);
 }
@@ -230,7 +230,7 @@ Xml& Value::toXml()
 Null& Value::toNull()
 {
     if (not isNull()) {
-        throw utils::CastError(_("Value is not a null"));
+        throw 1;
     }
     return static_cast < Null& >(*this);
 }
@@ -238,7 +238,7 @@ Null& Value::toNull()
 Matrix& Value::toMatrix()
 {
     if (not isMatrix()) {
-        throw utils::CastError(_("Value is not a matrix"));
+        throw 1;
     }
     return static_cast < Matrix& >(*this);
 }

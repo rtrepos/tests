@@ -28,7 +28,6 @@
 #include <vle/value/Map.hpp>
 #include <vle/value/Set.hpp>
 #include <vle/value/Matrix.hpp>
-#include <vle/utils/Algo.hpp>
 #include <boost/checked_delete.hpp>
 
 namespace vle { namespace value {
@@ -114,8 +113,7 @@ const Value* Map::operator[](const std::string& name) const
     const_iterator it = find(name);
 
     if (it == end()) {
-        throw utils::ArgError(fmt(_(
-                "Map: the key '%1%' does not exist")) % name);
+        throw 1;
     }
 
     return it->second;
@@ -126,8 +124,7 @@ Value* Map::operator[](const std::string& name)
     iterator it = find(name);
 
     if (it == end()) {
-        throw utils::ArgError(fmt(_(
-                "Map: the key '%1%' does not exist")) % name);
+        throw 1;
     }
 
     return it->second;
@@ -138,8 +135,7 @@ Value* Map::give(const std::string& name)
     iterator it = find(name);
 
     if (it == end()) {
-        throw utils::ArgError(fmt(_(
-                "Map: the key '%1%' does not exist")) % name);
+        throw 1;
     }
 
     Value* result = it->second;
@@ -181,7 +177,6 @@ Matrix& Map::getMatrix(const std::string& name)
 
 void Map::clear()
 {
-    vle::utils::forEach(begin(), end(), boost::checked_deleter < Value >());
 
     m_value.clear();
 }

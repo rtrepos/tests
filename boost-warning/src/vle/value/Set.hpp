@@ -201,7 +201,7 @@ public:
     {
 #ifndef NDEBUG
         if (i >= size()) {
-            throw utils::ArgError(_("Set: too big index"));
+            throw 1;
         }
 #endif
         delete m_value[i];
@@ -217,7 +217,7 @@ public:
     {
 #ifndef NDEBUG
         if (i >= size()) {
-            throw utils::ArgError(_("Set: too big index"));
+            throw 1;
         }
 #endif
         delete m_value[i];
@@ -238,7 +238,7 @@ public:
     {
 #ifndef NDEBUG
         if (i >= size()) {
-            throw utils::ArgError(_("Set: too big index"));
+            throw 1;
         }
 #endif
         delete m_value[i];
@@ -254,7 +254,7 @@ public:
     {
 #ifndef NDEBUG
         if (i >= size()) {
-            throw utils::ArgError(_("Set: too big index"));
+            throw 1;
         }
 #endif
         delete m_value[i];
@@ -271,7 +271,7 @@ public:
     {
 #ifndef NDEBUG
         if (i >= size()) {
-            throw utils::ArgError(_("Set: too big index"));
+            throw 1;
         }
 #endif
         return m_value[i];
@@ -287,7 +287,7 @@ public:
     {
 #ifndef NDEBUG
         if (i >= size()) {
-            throw utils::ArgError(_("Set: too big index"));
+            throw 1;
         }
 #endif
         return m_value[i];

@@ -34,6 +34,7 @@
 #include <vle/value/Boolean.hpp>
 #include <vle/value/XML.hpp>
 #include <vle/value/Null.hpp>
+#include <boost/checked_delete.hpp>
 #include <fstream>
 #include <sstream>
 
@@ -98,7 +99,7 @@ void Set::writeXml(std::ostream& out) const
 Value* Set::give(const size_type& i)
 {
     if (i >= size()) {
-        throw utils::ArgError(_("Set: too big index"));
+        throw 1;
     }
 
     Value* result = m_value[i];
@@ -109,7 +110,7 @@ Value* Set::give(const size_type& i)
 void Set::del(const size_type i)
 {
     if (i >= size()) {
-        throw utils::ArgError(_("Set: too big index"));
+        throw 1;
     }
 
     delete m_value[i];

@@ -29,9 +29,8 @@
 #define VLE_VALUE_VALUE_HPP 1
 
 #include <vle/version.hpp>
-#include <vle/utils/Types.hpp>
-#include <vle/utils/Exception.hpp>
 #include <vle/DllDefines.hpp>
+#include <ostream>
 
 namespace vle { namespace value {
 
@@ -257,7 +256,7 @@ namespace vle { namespace value {
     inline const Value& reference(const Value* value)
     {
         if (not value) {
-            throw utils::ArgError(_("Null value"));
+            throw 1;
         }
         return *value;
     }
@@ -271,7 +270,7 @@ namespace vle { namespace value {
     inline Value& reference(Value* value)
     {
         if (not value) {
-            throw utils::ArgError(_("Null value"));
+            throw 1;
         }
         return *value;
     }

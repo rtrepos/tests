@@ -37,13 +37,11 @@ Matrix::Matrix(index columns, index rows, index columnmax, index rowmax, index
     m_stepcol(resizeColumns), m_steprow(resizeRows), m_lastX(0), m_lastY(0)
 {
     if (columns > columnmax) {
-        throw utils::ArgError(fmt(_(
-                "Number of columns error: %1% on %2%")) % columns % columnmax);
+        throw 1;
     }
 
     if (rows > rowmax) {
-        throw utils::ArgError(fmt(_(
-                "Number of row error: %1% on %2%")) % rows % rowmax);
+        throw 1;
     }
 }
 

@@ -31,7 +31,6 @@
 #include <vle/value/Value.hpp>
 #include <vle/value/Double.hpp>
 #include <vle/value/Table.hpp>
-#include <vle/value/Tuple.hpp>
 #include <vle/DllDefines.hpp>
 #include <map>
 
@@ -395,19 +394,6 @@ public:
     void addDouble(const std::string& name, const double& value)
     {
         add(name, new Double(value));
-    }
-
-    /**
-     * @brief Add an Tuple to the value of the specified key. If the key does
-     * not exist, it will be build.
-     * @param name The key of the Map.
-     * @param value The value of the key.
-     */
-    void addTuple(const std::string& name,
-                  const Tuple::size_type& width = 0,
-                  const double& value = 0.0)
-    {
-        add(name, new Tuple(width, value));
     }
 
     /**

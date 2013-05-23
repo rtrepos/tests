@@ -31,7 +31,6 @@
 #include <vle/value/Value.hpp>
 #include <vle/value/Double.hpp>
 #include <vle/value/Table.hpp>
-#include <vle/value/Tuple.hpp>
 #include <vle/DllDefines.hpp>
 #include <boost/multi_array.hpp>
 
@@ -536,22 +535,6 @@ public:
         add(column, row, new Double(value));
     }
 
-    /**
-     * @brief Add a Tuple into the Matrix.
-     * @param column The column.
-     * @param row The row.
-     * @param width The width of the newly allocated Tuple.
-     * @param value The default value of cells in the Tuple.
-     * @return A reference to the allocated Tuple.
-     */
-    Tuple& addTuple(const size_type& column, const size_type& row,
-                    const Tuple::size_type& width = 0,
-                    const double& value = 0.0)
-    {
-        value::Tuple* tuple = new Tuple(width, value);
-        add(column, row, tuple);
-        return *tuple;
-    }
 
 
     /**

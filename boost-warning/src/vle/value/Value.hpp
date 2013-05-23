@@ -39,7 +39,6 @@ namespace vle { namespace value {
     class String;
     class Set;
     class Map;
-    class Tuple;
     class Table;
     class Matrix;
 
@@ -54,8 +53,8 @@ namespace vle { namespace value {
         static unsigned long int deallocated;
 #endif
 
-        enum type { BOOLEAN, INTEGER, DOUBLE, STRING, SET, MAP, TUPLE, TABLE,
-            XMLTYPE, NIL, MATRIX };
+        enum type {DOUBLE, SET, MAP, TABLE,
+            MATRIX };
 
 	/**
 	 * @brief Default constructor.
@@ -161,8 +160,6 @@ namespace vle { namespace value {
 	inline bool isMap() const
 	{ return getType() == Value::MAP; }
 
-	inline bool isTuple() const
-	{ return getType() == Value::TUPLE; }
 
 	inline bool isTable() const
 	{ return getType() == Value::TABLE; }
@@ -173,7 +170,6 @@ namespace vle { namespace value {
         const Double& toDouble() const;
         const Set& toSet() const;
         const Map& toMap() const;
-        const Tuple& toTuple() const;
         const Table& toTable() const;
         const Matrix& toMatrix() const;
 

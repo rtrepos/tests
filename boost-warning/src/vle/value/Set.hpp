@@ -31,7 +31,6 @@
 #include <vle/value/Value.hpp>
 #include <vle/value/Double.hpp>
 #include <vle/value/Table.hpp>
-#include <vle/value/Tuple.hpp>
 #include <vle/DllDefines.hpp>
 #include <vector>
 
@@ -386,14 +385,6 @@ public:
     void addTable(const Table::size_type& width = 0,
                   const Table::size_type& height = 0)
     { m_value.push_back(new Table(width, height)); }
-
-    /**
-     * @brief Add an Tuple into the set.
-     * @param value
-     */
-    void addTuple(const Tuple::size_type& width = 0, const double& value = 0.0)
-    { m_value.push_back(new Tuple(width, value)); }
-
     /**
      * @brief Add a Set at the end of the Set.
      * @return A reference to the newly allocated Set.

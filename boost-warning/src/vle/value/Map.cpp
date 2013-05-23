@@ -26,7 +26,6 @@
 
 
 #include <vle/value/Map.hpp>
-#include <vle/value/Set.hpp>
 #include <vle/value/Matrix.hpp>
 #include <boost/checked_delete.hpp>
 
@@ -84,15 +83,6 @@ void Map::writeXml(std::ostream& out) const
 Matrix& Map::addMatrix(const std::string& name)
 {
     value::Matrix* value = new Matrix();
-
-    add(name, value);
-
-    return *value;
-}
-
-Set& Map::addSet(const std::string& name)
-{
-    value::Set* value = new Set();
 
     add(name, value);
 

@@ -98,11 +98,6 @@ public:
     inline virtual Value::type getType() const
     { return Value::DOUBLE; }
 
-    /**
-     * @brief Push the double in the stream. Use the stream operator
-     * setprecision, fill etc. to manage the representation of this double.
-     * @param out The output stream.
-     */
     virtual void writeFile(std::ostream& out) const;
 
     /**

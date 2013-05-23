@@ -403,13 +403,6 @@ public:
     Map& addMap(const std::string& name);
 
     /**
-     * @brief Add a Set into the Map.
-     * @param name The key name.
-     * @return A reference to the newly allocated Set.
-     */
-    Set& addSet(const std::string& name);
-
-    /**
      * @brief Add a Matrix into the Map.
      * @param name The key name.
      * @return A reference to the newly allocated Matrix.
@@ -424,15 +417,6 @@ public:
      * exist.
      */
     Map& getMap(const std::string& name);
-
-    /**
-     * @brief Get the Set value objet from specified name.
-     * @param name The name of the Value in the map.
-     * @return a reference to the Value.
-     * @throw utils::ArgError if type is not Value::add or value do not
-     * exist.
-     */
-    Set& getSet(const std::string& name);
 
     /**
      * @brief Get the Matrix value from specified key.
@@ -451,15 +435,6 @@ public:
      * exist.
      */
     const Map& getMap(const std::string& name) const;
-
-    /**
-     * @brief Get the Set value objet from specified name.
-     * @param name The name of the Value in the map.
-     * @return a reference to the Value.
-     * @throw utils::ArgError if type is not Value::add or value do not
-     * exist.
-     */
-    const Set& getSet(const std::string& name) const;
 
     /**
      * @brief Get the Matrix value from specified key.

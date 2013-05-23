@@ -35,9 +35,6 @@ void Double::writeFile(std::ostream& out) const
 {
     std::streamsize old = out.precision();
 
-    out << std::setprecision(std::numeric_limits < double >::digits10)
-        << m_value;
-
     out.precision(old);
 }
 
@@ -45,18 +42,12 @@ void Double::writeString(std::ostream& out) const
 {
     std::streamsize old = out.precision();
 
-    out << std::setprecision(std::numeric_limits < double >::digits10)
-        << m_value;
-
     out.precision(old);
 }
 
 void Double::writeXml(std::ostream& out) const
 {
     std::streamsize old = out.precision();
-
-    out << std::setprecision(std::numeric_limits < double >::digits10)
-        << "<double>" << m_value << "</double>";
 
     out.precision(old);
 }

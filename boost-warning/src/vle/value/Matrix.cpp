@@ -26,7 +26,6 @@
 
 
 #include <vle/value/Matrix.hpp>
-#include <vle/value/Set.hpp>
 #include <vle/value/Map.hpp>
 
 namespace vle { namespace value {
@@ -129,12 +128,6 @@ void Matrix::clear()
     m_lastY = 0;
 }
 
-Set& Matrix::addSet(const size_type& column, const size_type& row)
-{
-    value::Set* tmp = new value::Set();
-    add(column, row, tmp);
-    return *tmp;
-}
 
 Map& Matrix::addMap(const size_type& column, const size_type& row)
 {

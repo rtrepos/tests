@@ -28,7 +28,6 @@
 #include <vle/value/Value.hpp>
 #include <vle/value/Double.hpp>
 #include <vle/value/Map.hpp>
-#include <vle/value/Set.hpp>
 #include <vle/value/Matrix.hpp>
 #include <sstream>
 
@@ -70,13 +69,6 @@ const Double& Value::toDouble() const
 }
 
 
-const Set& Value::toSet() const
-{
-    if (not isSet()) {
-        throw 1;
-    }
-    return static_cast < const Set& >(*this);
-}
 
 const Map& Value::toMap() const
 {

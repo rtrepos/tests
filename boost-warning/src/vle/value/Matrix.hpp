@@ -536,30 +536,12 @@ public:
 
 
     /**
-     * @brief Add a Map at the end of the Set.
-     * @param column The column.
-     * @param row The row.
-     * @return A reference to the newly allocated Map.
-     */
-    Map& addMap(const size_type& column, const size_type& row);
-
-    /**
      * @brief Add a Matrix at the end of the Set.
      * @param column The column.
      * @param row The row.
      * @return A reference to the newly allocated Set.
      */
     Matrix& addMatrix(const size_type& column, const size_type& row);
-
-    /**
-     * @brief Get a Map from the specified index.
-     * @param column The column.
-     * @param row The row.
-     * @return A Map.
-     * @throw utils::ArgError if the index 'column' or 'row' are to big (in
-     * debug mode) or if the value at (column, row) is null or is not a Set.
-     */
-    Map& getMap(const size_type& column, const size_type& row);
 
     /**
      * @brief Get a Matrix from the specified index.
@@ -570,16 +552,6 @@ public:
      * debug mode) or if the value at (column, row) is null or is not a Map.
      */
     Matrix& getMatrix(const size_type& column, const size_type& row);
-
-    /**
-     * @brief Get a constant Map from the specified index.
-     * @param column The column.
-     * @param row The row.
-     * @return A Map.
-     * @throw utils::ArgError if the index 'column' or 'row' are to big (in
-     * debug mode) or if the value at (column, row) is null or is not an Matrix.
-     */
-    const Map& getMap(const size_type& column, const size_type& row) const;
 
     /**
      * @brief Get a constant Matrix from the specified index.

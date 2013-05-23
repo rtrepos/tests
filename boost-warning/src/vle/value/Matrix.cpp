@@ -26,7 +26,6 @@
 
 
 #include <vle/value/Matrix.hpp>
-#include <vle/value/Map.hpp>
 
 namespace vle { namespace value {
 
@@ -126,14 +125,6 @@ void Matrix::clear()
 
     m_lastX = 0;
     m_lastY = 0;
-}
-
-
-Map& Matrix::addMap(const size_type& column, const size_type& row)
-{
-    value::Map* tmp = new value::Map();
-    add(column, row, tmp);
-    return *tmp;
 }
 
 Matrix& Matrix::addMatrix(const size_type& column, const size_type& row)

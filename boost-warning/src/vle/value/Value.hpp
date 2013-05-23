@@ -137,8 +137,6 @@ namespace vle { namespace value {
 	inline bool isMatrix() const
 	{ return getType() == Value::MATRIX; }
 
-        const Matrix& toMatrix() const;
-
         /**
          * @brief Check if the Value is a composite value, ie., a Map, a Set or
          * a Matrix.

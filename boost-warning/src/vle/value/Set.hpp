@@ -29,14 +29,9 @@
 #define VLE_VALUE_SET_HPP 1
 
 #include <vle/value/Value.hpp>
-#include <vle/value/Boolean.hpp>
 #include <vle/value/Double.hpp>
-#include <vle/value/Integer.hpp>
-#include <vle/value/Null.hpp>
-#include <vle/value/String.hpp>
 #include <vle/value/Table.hpp>
 #include <vle/value/Tuple.hpp>
-#include <vle/value/XML.hpp>
 #include <vle/DllDefines.hpp>
 #include <vector>
 
@@ -375,38 +370,6 @@ public:
     void add(const Value& value)
     { m_value.push_back(value.clone()); }
 
-    /**
-     * @brief Add a null value into the set.
-     */
-    void addNull()
-    { m_value.push_back(new Null()); }
-
-    /**
-     * @brief Add a BooleanValue into the set.
-     * @param value
-     */
-    void addBoolean(bool value)
-    { m_value.push_back(new Boolean(value)); }
-
-    /**
-     * @brief Get a bool from the specified index.
-     * @param i The index to get value.
-     * @return A value
-     * @throw utils::ArgError if the index 'i' is to big or if value at
-     * index 'i' is not a Boolean.
-     */
-    bool getBoolean(const size_type& i) const
-    { return value::toBoolean(get(i)); }
-
-    /**
-     * @brief Get a bool from the specified index.
-     * @param i The index to get value.
-     * @return A value
-     * @throw utils::ArgError if the index 'i' is to big or if value at
-     * index 'i' is not a Boolean.
-     */
-    bool& getBoolean(const size_type& i)
-    { return value::toBoolean(get(i)); }
 
     /**
      * @brief Add a double into the set.
@@ -415,106 +378,6 @@ public:
     void addDouble(const double& value)
     { m_value.push_back(new Double(value)); }
 
-    /**
-     * @brief Get a double from the specified index.
-     * @param i The index to get value.
-     * @return A value
-     * @throw utils::ArgError if the index 'i' is to big or if value at
-     * index 'i' is not a Double.
-     */
-    const double& getDouble(const size_type& i) const
-    { return value::toDouble(get(i)); }
-
-    /**
-     * @brief Get a double from the specified index.
-     * @param i The index to get value.
-     * @return A value
-     * @throw utils::ArgError if the index 'i' is to big or if value at
-     * index 'i' is not a Double.
-     */
-    double& getDouble(const size_type& i)
-    { return value::toDouble(get(i)); }
-
-    /**
-     * @brief Add an IntegerValue into the set.
-     * @param value
-     */
-    void addInt(const int& value)
-    { m_value.push_back(new Integer(value)); }
-
-    /**
-     * @brief Get a int from the specified index.
-     * @param i The index to get value.
-     * @return A value
-     * @throw utils::ArgError if the index 'i' is to big or if value at
-     * index 'i' is not a Integer.
-     */
-    const int32_t& getInt(const size_type& i) const
-    { return value::toInteger(get(i)); }
-
-    /**
-     * @brief Get a int from the specified index.
-     * @param i The index to get value.
-     * @return A value
-     * @throw utils::ArgError if the index 'i' is to big or if value at
-     * index 'i' is not a Integer.
-     */
-    int32_t& getInt(const size_type& i)
-    { return value::toInteger(get(i)); }
-
-    /**
-     * @brief Add a StringValue into the set.
-     * @param value
-     */
-    void addString(const std::string& value)
-    { m_value.push_back(new String(value)); }
-
-    /**
-     * @brief Get a string from the specified index.
-     * @param i The index to get value.
-     * @return A value
-     * @throw utils::ArgError if the index 'i' is to big or if value at
-     * index 'i' is not a String.
-     */
-    const std::string& getString(const size_type& i) const
-    { return value::toString(get(i)); }
-
-    /**
-     * @brief Get a string from the specified index.
-     * @param i The index to get value.
-     * @return A value
-     * @throw utils::ArgError if the index 'i' is to big or if value at
-     * index 'i' is not a String.
-     */
-    std::string& getString(const size_type& i)
-    { return value::toString(get(i)); }
-
-    /**
-     * @brief Add an XMLValue into the set.
-     * @param value
-     */
-    void addXml(const std::string& value)
-    { m_value.push_back(new Xml(value)); }
-
-    /**
-     * @brief Get a string from the specified index.
-     * @param i The index to get value.
-     * @return A value
-     * @throw utils::ArgError if the index 'i' is to big or if value at
-     * index 'i' is not an XML.
-     */
-    const std::string& getXml(const size_type& i) const
-    { return value::toXml(get(i)); }
-
-    /**
-     * @brief Get a string from the specified index.
-     * @param i The index to get value.
-     * @return A value
-     * @throw utils::ArgError if the index 'i' is to big or if value at
-     * index 'i' is not an XML.
-     */
-    std::string& getXml(const size_type& i)
-    { return value::toXml(get(i)); }
 
     /**
      * @brief Add an Table into the set.
@@ -525,51 +388,11 @@ public:
     { m_value.push_back(new Table(width, height)); }
 
     /**
-     * @brief Get a string from the specified index.
-     * @param i The index to get value.
-     * @return A value
-     * @throw utils::ArgError if the index 'i' is to big or if value at
-     * index 'i' is not an XML.
-     */
-    const Table& getTable(const size_type& i) const
-    { return value::toTableValue(value::reference(get(i))); }
-
-    /**
-     * @brief Get a string from the specified index.
-     * @param i The index to get value.
-     * @return A value
-     * @throw utils::ArgError if the index 'i' is to big or if value at
-     * index 'i' is not an XML.
-     */
-    Table& getTable(const size_type& i)
-    { return value::toTableValue(value::reference(get(i))); }
-
-    /**
      * @brief Add an Tuple into the set.
      * @param value
      */
     void addTuple(const Tuple::size_type& width = 0, const double& value = 0.0)
     { m_value.push_back(new Tuple(width, value)); }
-
-    /**
-     * @brief Get a string from the specified index.
-     * @param i The index to get value.
-     * @return A value
-     * @throw utils::ArgError if the index 'i' is to big or if value at
-     * index 'i' is not an XML.
-     */
-    const Tuple& getTuple(const size_type& i) const
-    { return value::toTupleValue(value::reference(get(i))); }
-
-    /**
-     * @brief Get a string from the specified index.
-     * @param i The index to get value.
-     * @return A value
-     * @throw utils::ArgError if the index 'i' is to big or if value at
-     * index 'i' is not an XML.
-     */
-    Tuple& getTuple(const size_type& i)
-    { return value::toTupleValue(value::reference(get(i))); }
 
     /**
      * @brief Add a Set at the end of the Set.
@@ -661,23 +484,10 @@ inline const Set& toSetValue(const Value& value)
 inline const Set* toSetValue(const Value* value)
 { return value ? &value->toSet() : 0; }
 
-inline Set& toSetValue(Value& value)
-{ return value.toSet(); }
 
-inline Set* toSetValue(Value* value)
-{ return value ? &value->toSet() : 0; }
 
 inline const VectorValue& toSet(const Value& value)
 { return value.toSet().value(); }
-
-inline VectorValue& toSet(Value& value)
-{ return value.toSet().value(); }
-
-inline const VectorValue& toSet(const Value* value)
-{ return value::reference(value).toSet().value(); }
-
-inline VectorValue& toSet(Value* value)
-{ return value::reference(value).toSet().value(); }
 
 }} // namespace vle value
 

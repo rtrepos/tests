@@ -235,23 +235,12 @@ inline const Tuple& toTupleValue(const Value& value)
 inline const Tuple* toTupleValue(const Value* value)
 { return value ? &value->toTuple() : 0; }
 
-inline Tuple& toTupleValue(Value& value)
-{ return value.toTuple(); }
 
-inline Tuple* toTupleValue(Value* value)
-{ return value ? &value->toTuple() : 0; }
 
 inline const TupleValue& toTuple(const Value& value)
 { return value.toTuple().value(); }
 
-inline TupleValue& toTuple(Value& value)
-{ return value.toTuple().value(); }
 
-inline const TupleValue& toTuple(const Value* value)
-{ return value::reference(value).toTuple().value(); }
-
-inline TupleValue& toTuple(Value* value)
-{ return value::reference(value).toTuple().value(); }
 
 }} // namespace vle value
 

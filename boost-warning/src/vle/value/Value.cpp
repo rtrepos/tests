@@ -26,16 +26,11 @@
 
 
 #include <vle/value/Value.hpp>
-#include <vle/value/Boolean.hpp>
-#include <vle/value/Integer.hpp>
 #include <vle/value/Double.hpp>
-#include <vle/value/String.hpp>
 #include <vle/value/Map.hpp>
 #include <vle/value/Set.hpp>
 #include <vle/value/Tuple.hpp>
 #include <vle/value/Table.hpp>
-#include <vle/value/XML.hpp>
-#include <vle/value/Null.hpp>
 #include <vle/value/Matrix.hpp>
 #include <sstream>
 
@@ -67,21 +62,6 @@ std::string Value::writeToXml() const
     return out.str();
 }
 
-const Boolean& Value::toBoolean() const
-{
-    if (not isBoolean()) {
-        throw 1;
-    }
-    return static_cast < const Boolean& >(*this);
-}
-
-const Integer& Value::toInteger() const
-{
-    if (not isInteger()) {
-        throw 1;
-    }
-    return static_cast < const Integer& >(*this);
-}
 
 const Double& Value::toDouble() const
 {
@@ -91,13 +71,6 @@ const Double& Value::toDouble() const
     return static_cast < const Double& >(*this);
 }
 
-const String& Value::toString() const
-{
-    if (not isString()) {
-        throw 1;
-    }
-    return static_cast < const String& >(*this);
-}
 
 const Set& Value::toSet() const
 {
@@ -131,21 +104,6 @@ const Table& Value::toTable() const
     return static_cast < const Table& >(*this);
 }
 
-const Xml& Value::toXml() const
-{
-    if (not isXml()) {
-        throw 1;
-    }
-    return static_cast < const Xml& >(*this);
-}
-
-const Null& Value::toNull() const
-{
-    if (not isNull()) {
-        throw 1;
-    }
-    return static_cast < const Null& >(*this);
-}
 
 const Matrix& Value::toMatrix() const
 {
@@ -155,93 +113,6 @@ const Matrix& Value::toMatrix() const
     return static_cast < const Matrix& >(*this);
 }
 
-Boolean& Value::toBoolean()
-{
-    if (not isBoolean()) {
-        throw 1;
-    }
-    return static_cast < Boolean& >(*this);
-}
-
-Integer& Value::toInteger()
-{
-    if (not isInteger()) {
-        throw 1;
-    }
-    return static_cast < Integer& >(*this);
-}
-
-Double& Value::toDouble()
-{
-    if (not isDouble()) {
-        throw 1;
-    }
-    return static_cast < Double& >(*this);
-}
-
-String& Value::toString()
-{
-    if (not isString()) {
-        throw 1;
-    }
-    return static_cast < String& >(*this);
-}
-
-Set& Value::toSet()
-{
-    if (not isSet()) {
-        throw 1;
-    }
-    return static_cast < Set& >(*this);
-}
-
-Map& Value::toMap()
-{
-    if (not isMap()) {
-        throw 1;
-    }
-    return static_cast < Map& >(*this);
-}
-
-Tuple& Value::toTuple()
-{
-    if (not isTuple()) {
-        throw 1;
-    }
-    return static_cast < Tuple& >(*this);
-}
-
-Table& Value::toTable()
-{
-    if (not isTable()) {
-        throw 1;
-    }
-    return static_cast < Table& >(*this);
-}
-
-Xml& Value::toXml()
-{
-    if (not isXml()) {
-        throw 1;
-    }
-    return static_cast < Xml& >(*this);
-}
-
-Null& Value::toNull()
-{
-    if (not isNull()) {
-        throw 1;
-    }
-    return static_cast < Null& >(*this);
-}
-
-Matrix& Value::toMatrix()
-{
-    if (not isMatrix()) {
-        throw 1;
-    }
-    return static_cast < Matrix& >(*this);
-}
 
 }} // namespace vle value
 

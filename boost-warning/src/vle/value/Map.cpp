@@ -145,36 +145,6 @@ Value* Map::give(const std::string& name)
     return result;
 }
 
-const Map& Map::getMap(const std::string& name) const
-{
-    return value::toMapValue(value::reference(get(name)));
-}
-
-const Set& Map::getSet(const std::string& name) const
-{
-    return value::toSetValue(value::reference(get(name)));
-}
-
-const Matrix& Map::getMatrix(const std::string& name) const
-{
-    return value::toMatrixValue(value::reference(get(name)));
-}
-
-Map& Map::getMap(const std::string& name)
-{
-    return value::toMapValue(value::reference(get(name)));
-}
-
-Set& Map::getSet(const std::string& name)
-{
-    return value::toSetValue(value::reference(get(name)));
-}
-
-Matrix& Map::getMatrix(const std::string& name)
-{
-    return value::toMatrixValue(value::reference(get(name)));
-}
-
 void Map::clear()
 {
 

@@ -35,16 +35,12 @@
 namespace vle { namespace value {
 
     class Value;
-    class Boolean;
-    class Integer;
     class Double;
     class String;
     class Set;
     class Map;
     class Tuple;
     class Table;
-    class Xml;
-    class Null;
     class Matrix;
 
     /**
@@ -156,17 +152,8 @@ namespace vle { namespace value {
          */
         std::string writeToXml() const;
 
-	inline bool isInteger() const
-	{ return getType() == Value::INTEGER; }
-
-	inline bool isBoolean() const
-	{ return getType() == Value::BOOLEAN; }
-
 	inline bool isDouble() const
 	{ return getType() == Value::DOUBLE; }
-
-	inline bool isString() const
-	{ return getType() == Value::STRING; }
 
 	inline bool isSet() const
 	{ return getType() == Value::SET; }
@@ -180,25 +167,14 @@ namespace vle { namespace value {
 	inline bool isTable() const
 	{ return getType() == Value::TABLE; }
 
-	inline bool isXml() const
-	{ return getType() == Value::XMLTYPE; }
-
-	inline bool isNull() const
-	{ return getType() == Value::NIL; }
-
 	inline bool isMatrix() const
 	{ return getType() == Value::MATRIX; }
 
-        const Boolean& toBoolean() const;
-        const Integer& toInteger() const;
         const Double& toDouble() const;
-        const String& toString() const;
         const Set& toSet() const;
         const Map& toMap() const;
         const Tuple& toTuple() const;
         const Table& toTable() const;
-        const Xml& toXml() const;
-        const Null& toNull() const;
         const Matrix& toMatrix() const;
 
         /**
@@ -219,97 +195,12 @@ namespace vle { namespace value {
             }
         }
 
-        Boolean& toBoolean();
-        Integer& toInteger();
-        Double& toDouble();
-        String& toString();
-        Set& toSet();
-        Map& toMap();
-        Tuple& toTuple();
-        Table& toTable();
-        Xml& toXml();
-        Null& toNull();
-        Matrix& toMatrix();
 
-        /**
-         * @brief Stream operator for the value classes. This operator call the
-         * value::Value::writeString function used, principally to debug or show
-         * the values in console, gui widgets etc.
-         * @param out the output stream where data are written.
-         * @param obj the sub class of value::Value to write.
-         * @return the std::stream.
-         */
-        friend std::ostream& operator<<(std::ostream& out, const Value& obj)
-        { obj.writeString(out); return out; }
 
     private:
         Value& operator=(const Value& /* value */) { return *this; }
     };
 
-    /**
-     * @brief Convert a constant value::Value pointer to a constant
-     * value::Value reference.
-     * @param value The pointer to convert.
-     * @return A reference.
-     * @throw utils::ArgError if value is NULL.
-     */
-    inline const Value& reference(const Value* value)
-    {
-        if (not value) {
-            throw 1;
-        }
-        return *value;
-    }
-
-    /**
-     * @brief Convert a value::Value pointer to a value::Value reference.
-     * @param value The pointer to convert.
-     * @return A reference.
-     * @throw utils::ArgError if value is NULL.
-     */
-    inline Value& reference(Value* value)
-    {
-        if (not value) {
-            throw 1;
-        }
-        return *value;
-    }
-
-    ///
-    ////
-    ///
-
-    /**
-     * @brief A functor to find composite Value, ie., values of type Map, Set or
-     * Matrix. To use with std::find_if for instance:
-     * @code
-     * iterator it = std::find_if(begin(), end(), IsComposite());
-     * @endcode
-     */
-    struct VLE_API IsComposite
-    {
-        bool operator()(const Value& val) const
-        { return Value::isComposite(&val); }
-
-        bool operator()(const Value* val) const
-        { return Value::isComposite(val); }
-    };
-
-    /**
-     * @brief A functor to help to the clone of value to use with
-     * std::transform for instance
-     * @code
-     * std::transform(vec.begin(), vec.end(), out.begin(), CloneValue());
-     * @endcode
-     */
-    struct VLE_API CloneValue
-    {
-	Value* operator()(const Value& val) const
-	{ return val.clone(); }
-
-	Value* operator()(const Value* val) const
-	{ return (not val) ? 0 : val->clone(); }
-    };
 
 }} // namespace vle
 

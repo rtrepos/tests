@@ -157,23 +157,7 @@ inline const Double& toDoubleValue(const Value& value)
 inline const Double* toDoubleValue(const Value* value)
 { return value ? &value->toDouble() : 0; }
 
-inline Double& toDoubleValue(Value& value)
-{ return value.toDouble(); }
 
-inline Double* toDoubleValue(Value* value)
-{ return value ? &value->toDouble() : 0; }
-
-inline const double& toDouble(const Value& value)
-{ return value.toDouble().value(); }
-
-inline double& toDouble(Value& value)
-{ return value.toDouble().value(); }
-
-inline const double& toDouble(const Value* value)
-{ return value::reference(value).toDouble().value(); }
-
-inline double& toDouble(Value* value)
-{ return value::reference(value).toDouble().value(); }
 
 }} // namespace vle value
 

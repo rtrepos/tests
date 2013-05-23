@@ -29,14 +29,9 @@
 #define VLE_VALUE_MATRIX_HPP 1
 
 #include <vle/value/Value.hpp>
-#include <vle/value/Boolean.hpp>
 #include <vle/value/Double.hpp>
-#include <vle/value/Integer.hpp>
-#include <vle/value/Null.hpp>
-#include <vle/value/String.hpp>
 #include <vle/value/Table.hpp>
 #include <vle/value/Tuple.hpp>
-#include <vle/value/XML.hpp>
 #include <vle/DllDefines.hpp>
 #include <boost/multi_array.hpp>
 
@@ -530,49 +525,6 @@ public:
      * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
     /**
-     * @brief Add a null value into the matrix.
-     * @param column The column.
-     * @param row The row.
-     */
-    void addNull(const size_type& column, const size_type& row)
-    {
-        add(column, row, new Null());
-    }
-
-    /**
-     * @brief Add a boolean into the matrix.
-     * @param column The column.
-     * @param row The row.
-     * @param value The value of the boolean.
-     */
-    void addBoolean(const size_type& column, const size_type& row, bool value)
-    {
-        add(column, row, new Boolean(value));
-    }
-
-    /**
-     * @brief Get a boolean from the matrix.
-     * @param column The column.
-     * @param row The row.
-     * @return The boolean readed from the matrix.
-     */
-    bool getBoolean(const size_type& column, const size_type& row) const
-    {
-        return value::toBoolean(get(column, row));
-    }
-
-    /**
-     * @brief Get a boolean from the matrix.
-     * @param column The column.
-     * @param row The row.
-     * @return The boolean readed from the matrix.
-     */
-    bool& getBoolean(const size_type& column, const size_type& row)
-    {
-        return value::toBoolean(get(column, row));
-    }
-
-    /**
      * @brief Add a double into the matrix.
      * @param column The column.
      * @param row The row.
@@ -582,131 +534,6 @@ public:
                    const double& value)
     {
         add(column, row, new Double(value));
-    }
-
-    /**
-     * @brief Get a double from the matrix.
-     * @param column The column.
-     * @param row The row.
-     * @return The double readed from the matrix.
-     */
-    const double& getDouble(const size_type& column, const size_type& row) const
-    {
-        return value::toDouble(get(column, row));
-    }
-
-    /**
-     * @brief Get a double from the matrix.
-     * @param column The column.
-     * @param row The row.
-     * @return The double readed from the matrix.
-     */
-    double& getDouble(const size_type& column, const size_type& row)
-    {
-        return value::toDouble(get(column, row));
-    }
-
-    /**
-     * @brief Add an integer into the matrix.
-     * @param column The column.
-     * @param row The row.
-     * @param value The value of the int.
-     */
-    void addInt(const size_type& column, const size_type& row, const int32_t& value)
-    {
-        add(column, row, new Integer(value));
-    }
-
-    /**
-     * @brief Get an integer from the matrix.
-     * @param column The column.
-     * @param row The row.
-     * @return The integer readed from the matrix.
-     */
-    const int32_t& getInt(const size_type& column, const size_type& row) const
-    {
-        return value::toInteger(get(column, row));
-    }
-
-    /**
-     * @brief Get an integer from the matrix.
-     * @param column The column.
-     * @param row The row.
-     * @return The integer readed from the matrix.
-     */
-    int32_t& getInt(const size_type& column, const size_type& row)
-    {
-        return value::toInteger(get(column, row));
-    }
-
-    /**
-     * @brief Add a string into the matrix.
-     * @param column The column.
-     * @param row The row.
-     * @param value The value of the string.
-     */
-    void addString(const size_type& column, const size_type& row,
-                   const std::string& value)
-    {
-        add(column, row, new String(value));
-    }
-
-    /**
-     * @brief Get a string from the matrix.
-     * @param column The column.
-     * @param row The row.
-     * @return The integer readed from the matrix.
-     */
-    const std::string& getString(const size_type& column,
-                                 const size_type& row) const
-    {
-        return value::toString(get(column, row));
-    }
-
-    /**
-     * @brief Get a string from the matrix.
-     * @param column The column.
-     * @param row The row.
-     * @return The integer readed from the matrix.
-     */
-    std::string& getString(const size_type& column, const size_type& row)
-    {
-        return value::toString(get(column, row));
-    }
-
-    /**
-     * @brief Add an xml into the matrix.
-     * @param column The column.
-     * @param row The row.
-     * @param value The value of the xml.
-     */
-    void addXml(const size_type& column, const size_type& row,
-                const std::string& value)
-    {
-        add(column, row, new Xml(value));
-    }
-
-    /**
-     * @brief Get an xml from the matrix.
-     * @param column The column.
-     * @param row The row.
-     * @return The integer readed from the matrix.
-     */
-    const std::string& getXml(const size_type& column,
-                              const size_type& row) const
-    {
-        return value::toXml(get(column, row));
-    }
-
-    /**
-     * @brief Get an xml from the matrix.
-     * @param column The column.
-     * @param row The row.
-     * @return The integer readed from the matrix.
-     */
-    std::string& getXml(const size_type& column, const size_type& row)
-    {
-        return value::toXml(get(column, row));
     }
 
     /**
@@ -726,27 +553,6 @@ public:
         return *tuple;
     }
 
-    /**
-     * @brief Get a Tuple from the matrix.
-     * @param column The column.
-     * @param row The row.
-     * @return The Tuple readed from the matrix.
-     */
-    const Tuple& getTuple(const size_type& column, const size_type& row) const
-    {
-        return value::toTupleValue(value::reference(get(column, row)));
-    }
-
-    /**
-     * @brief Get a Tuple from the matrix.
-     * @param column The column.
-     * @param row The row.
-     * @return The Tuple readed from the matrix.
-     */
-    Tuple& getTuple(const size_type& column, const size_type& row)
-    {
-        return value::toTupleValue(value::reference(get(column, row)));
-    }
 
     /**
      * @brief Add a Table into the Matrix.
@@ -765,27 +571,6 @@ public:
         return *table;
     }
 
-    /**
-     * @brief Get a Table from the matrix.
-     * @param column The column.
-     * @param row The row.
-     * @return The Table readed from the matrix.
-     */
-    const Table& getTable(const size_type& column, const size_type& row) const
-    {
-        return value::toTableValue(value::reference(get(column, row)));
-    }
-
-    /**
-     * @brief Get a Table from the matrix.
-     * @param column The column.
-     * @param row The row.
-     * @return The Table readed from the matrix.
-     */
-    Table& getTable(const size_type& column, const size_type& row)
-    {
-        return value::toTableValue(value::reference(get(column, row)));
-    }
 
     /**
      * @brief Add a Set at the end of the Set.
@@ -903,23 +688,11 @@ inline const Matrix& toMatrixValue(const Value& value)
 inline const Matrix* toMatrixValue(const Value* value)
 { return value ? &value->toMatrix() : 0; }
 
-inline Matrix& toMatrixValue(Value& value)
-{ return value.toMatrix(); }
 
-inline Matrix* toMatrixValue(Value* value)
-{ return value ? &value->toMatrix() : 0; }
 
 inline ConstMatrixView toMatrix(const Value& value)
 { return value.toMatrix().value(); }
 
-inline MatrixView toMatrix(Value& value)
-{ return value.toMatrix().value(); }
-
-inline ConstMatrixView toMatrix(const Value* value)
-{ return value::reference(value).toMatrix().value(); }
-
-inline MatrixView toMatrix(Value* value)
-{ return value::reference(value).toMatrix().value(); }
 
 }} // namespace vle value
 

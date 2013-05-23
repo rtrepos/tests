@@ -261,29 +261,10 @@ private:
     index           m_height;
 };
 
-inline const Table& toTableValue(const Value& value)
-{ return value.toTable(); }
 
-inline const Table* toTableValue(const Value* value)
-{ return value ? &value->toTable() : 0; }
-
-inline Table& toTableValue(Value& value)
-{ return value.toTable(); }
-
-inline Table* toTableValue(Value* value)
-{ return value ? &value->toTable() : 0; }
 
 inline const TableValue& toTable(const Value& value)
 { return value.toTable().value(); }
-
-inline TableValue& toTable(Value& value)
-{ return value.toTable().value(); }
-
-inline const TableValue& toTable(const Value* value)
-{ return value::reference(value).toTable().value(); }
-
-inline TableValue& toTable(Value* value)
-{ return value::reference(value).toTable().value(); }
 
 }} // namespace vle value
 

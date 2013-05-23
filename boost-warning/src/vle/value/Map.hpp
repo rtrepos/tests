@@ -29,14 +29,9 @@
 #define VLE_VALUE_MAP_HPP 1
 
 #include <vle/value/Value.hpp>
-#include <vle/value/Boolean.hpp>
 #include <vle/value/Double.hpp>
-#include <vle/value/Integer.hpp>
-#include <vle/value/Null.hpp>
-#include <vle/value/String.hpp>
 #include <vle/value/Table.hpp>
 #include <vle/value/Tuple.hpp>
-#include <vle/value/XML.hpp>
 #include <vle/DllDefines.hpp>
 #include <map>
 
@@ -392,139 +387,6 @@ public:
      * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
     /**
-     * @brief Set a string to the value of the specified key. If the key
-     * does not exist, it will be build.
-     * @param name The key of the map.
-     * @param value The value of the key.
-     */
-    void addNull(const std::string& name)
-    {
-        add(name, new Null());
-    }
-
-    /**
-     * @brief Get the String value objet from specified name.
-     * @param name The name of the Value in the map.
-     * @return a reference to the Value.
-     * @throw utils::ArgError if type is not Value::STRING or value do not
-     * exist.
-     */
-    const std::string& getString(const std::string& name) const
-    {
-        return value::toString(get(name));
-    }
-
-    /**
-     * @brief Get the String value objet from specified name.
-     * @param name The name of the Value in the map.
-     * @return a reference to the Value.
-     * @throw utils::ArgError if type is not Value::STRING or value do not
-     * exist.
-     */
-    std::string& getString(const std::string& name)
-    {
-        return value::toString(get(name));
-    }
-
-    /**
-     * @brief Set a string to the value of the specified key. If the key
-     * does not exist, it will be build.
-     * @param name The key of the map.
-     * @param value The value of the key.
-     */
-    void addString(const std::string& name, const std::string& value)
-    {
-        add(name, new String(value));
-    }
-
-    /**
-     * @brief Get the String value objet from specified name.
-     * @param name The name of the Value in the map.
-     * @return a reference to the Value.
-     * @throw utils::ArgError if type is not Value::STRING or value do not
-     * exist.
-     */
-    bool getBoolean(const std::string& name) const
-    {
-        return value::toBoolean(get(name));
-    }
-
-    /**
-     * @brief Get the String value objet from specified name.
-     * @param name The name of the Value in the map.
-     * @return a reference to the Value.
-     * @throw utils::ArgError if type is not Value::STRING or value do not
-     * exist.
-     */
-    bool& getBoolean(const std::string& name)
-    {
-        return value::toBoolean(get(name));
-    }
-
-    /**
-     * @brief Set a boolean to the value of the specified key. If the key
-     * does not exist, it will be build.
-     * @param name The key of the map.
-     * @param value The value of the key.
-     */
-    void addBoolean(const std::string& name, bool value)
-    {
-        add(name, new Boolean(value));
-    }
-
-    const int32_t& getInt(const std::string& name) const
-    {
-        return value::toInteger(get(name));
-    }
-
-    /**
-     * @brief Get the integer value objet from specified name.
-     * @param name The name of the Value in the map.
-     * @return a reference to the Value.
-     * @throw utils::ArgError if type is not Value::INTEGER or value do not
-     * exist.
-     */
-    int32_t& getInt(const std::string& name)
-    {
-        return value::toInteger(get(name));
-    }
-
-    /**
-     * @brief Set a integer to the value of the specified key. If the
-     * key does not exist, it will be build.
-     * @param name The key of the map.
-     * @param value The value of the key.
-     */
-    void addInt(const std::string& name, const int32_t& value)
-    {
-        add(name, new Integer(value));
-    }
-
-    /**
-     * @brief Get the Double value objet from specified name.
-     * @param name The name of the Value in the map.
-     * @return a reference to the Value.
-     * @throw utils::ArgError if type is not Value::DOUBLE or value do not
-     * exist.
-     */
-    const double& getDouble(const std::string& name) const
-    {
-        return value::toDouble(get(name));
-    }
-
-    /**
-     * @brief Get the Double value objet from specified name.
-     * @param name The name of the Value in the map.
-     * @return a reference to the Value.
-     * @throw utils::ArgError if type is not Value::DOUBLE or value do not
-     * exist.
-     */
-    double& getDouble(const std::string& name)
-    {
-        return value::toDouble(get(name));
-    }
-
-    /**
      * @brief Set a double to the value of the specified key. If the
      * key does not exist, it will be build.
      * @param name The key of the map.
@@ -533,98 +395,6 @@ public:
     void addDouble(const std::string& name, const double& value)
     {
         add(name, new Double(value));
-    }
-
-    /**
-     * @brief Get the Xml value objet from specified name.
-     * @param name The name of the Value in the map.
-     * @return a reference to the Value.
-     * @throw utils::ArgError if type is not Value::STRING or value do not
-     * exist.
-     */
-    const std::string& getXml(const std::string& name) const
-    {
-        return value::toXml(get(name));
-    }
-
-    /**
-     * @brief Get the Xml value objet from specified name.
-     * @param name The name of the Value in the map.
-     * @return a reference to the Value.
-     * @throw utils::ArgError if type is not Value::STRING or value do not
-     * exist.
-     */
-    std::string& getXml(const std::string& name)
-    {
-        return value::toXml(get(name));
-    }
-
-    /**
-     * @brief Set an Xml to the value of the specified key. If the key does not
-     * exist, it will be build.
-     * @param name The key of the Xml.
-     * @param value The value of the key.
-     */
-    void addXml(const std::string& name, const std::string& value)
-    {
-        add(name, new Xml(value));
-    }
-
-    /**
-     * @brief Get the Table value objet from specified name.
-     * @param name The name of the Value in the Map.
-     * @return a reference to the Table.
-     * @throw utils::ArgError if type is not a Table or value do not exist.
-     */
-    const Table& getTable(const std::string& name) const
-    {
-        return value::toTableValue(value::reference(get(name)));
-    }
-
-    /**
-     * @brief Get the Table value objet from specified name.
-     * @param name The name of the Value in the Map.
-     * @return a reference to the Table.
-     * @throw utils::ArgError if type is not a Table or value do not exist.
-     */
-    Table& getTable(const std::string& name)
-    {
-        return value::toTableValue(value::reference(get(name)));
-    }
-
-    /**
-     * @brief Add an XML to the value of the specified key. If the key does not
-     * exist, it will be build.
-     * @param name The key of the map.
-     * @param value The value of the key.
-     */
-    void addTable(const std::string& name,
-                  const Table::size_type& width = 0,
-                  const Table::size_type& height = 0)
-    {
-        add(name, new Table(width, height));
-    }
-
-    /**
-     * @brief Get the Tuple value objet from specified name.
-     * @param name The name of the Value in the Map.
-     * @return a reference to the Tuple.
-     * @throw utils::ArgError if type is not a Tuple or value do not exist.
-     */
-    const Tuple& getTuple(const std::string& name) const
-    {
-        return value::toTupleValue(value::reference(get(name)));
-    }
-
-    /**
-     * @brief Get the Tuple value objet from specified name.
-     * @param name The name of the Value in the Map.
-     * @return a reference to the Tuple.
-     * @throw utils::ArgError if type is not a Tuple or value do not exist.
-     */
-    Tuple& getTuple(const std::string& name)
-    {
-        return value::toTupleValue(value::reference(get(name)));
     }
 
     /**
@@ -729,23 +499,11 @@ inline const Map& toMapValue(const Value& value)
 inline const Map* toMapValue(const Value* value)
 { return value ? &value->toMap() : 0; }
 
-inline Map& toMapValue(Value& value)
-{ return value.toMap(); }
-
-inline Map* toMapValue(Value* value)
-{ return value ? &value->toMap() : 0; }
 
 inline const MapValue& toMap(const Value& value)
 { return value.toMap().value(); }
 
-inline MapValue& toMap(Value& value)
-{ return value.toMap().value(); }
 
-inline const MapValue& toMap(const Value* value)
-{ return value::reference(value).toMap().value(); }
-
-inline MapValue& toMap(Value* value)
-{ return value::reference(value).toMap().value(); }
 
 }} // namespace vle value
 

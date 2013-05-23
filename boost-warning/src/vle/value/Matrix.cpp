@@ -150,36 +150,7 @@ Matrix& Matrix::addMatrix(const size_type& column, const size_type& row)
     return *tmp;
 }
 
-Set& Matrix::getSet(const size_type& column, const size_type& row)
-{
-    return value::toSetValue(value::reference(get(column, row)));
-}
 
-Map& Matrix::getMap(const size_type& column, const size_type& row)
-{
-    return value::toMapValue(value::reference(get(column, row)));
-}
-
-Matrix& Matrix::getMatrix(const size_type& column, const size_type& row)
-{
-    return value::toMatrixValue(value::reference(get(column, row)));
-}
-
-const Set& Matrix::getSet(const size_type& column, const size_type& row) const
-{
-    return value::toSetValue(value::reference(get(column, row)));
-}
-
-const Map& Matrix::getMap(const size_type& column, const size_type& row) const
-{
-    return value::toMapValue(value::reference(get(column, row)));
-}
-
-const Matrix& Matrix::getMatrix(const size_type& column,
-                                const size_type& row) const
-{
-    return value::toMatrixValue(value::reference(get(column, row)));
-}
 
 void Matrix::resize(const size_type& columns, const size_type& rows)
 {

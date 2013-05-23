@@ -28,12 +28,7 @@
 #include <vle/value/Set.hpp>
 #include <vle/value/Map.hpp>
 #include <vle/value/Matrix.hpp>
-#include <vle/value/String.hpp>
-#include <vle/value/Integer.hpp>
 #include <vle/value/Double.hpp>
-#include <vle/value/Boolean.hpp>
-#include <vle/value/XML.hpp>
-#include <vle/value/Null.hpp>
 #include <boost/checked_delete.hpp>
 #include <fstream>
 #include <sstream>
@@ -45,8 +40,6 @@ Set::Set(const Set& setfactory)
 {
     m_value.resize(setfactory.size());
 
-    std::transform(setfactory.begin(), setfactory.end(),
-                   m_value.begin(), CloneValue());
 }
 
 void Set::writeFile(std::ostream& out) const
@@ -150,48 +143,6 @@ Matrix& Set::addMatrix()
     m_value.push_back(value);
 
     return *value;
-}
-
-Set& Set::getSet(const size_type& i)
-{
-    value::Value& value = value::reference(get(i));
-
-    return value::toSetValue(value);
-}
-
-Map& Set::getMap(const size_type& i)
-{
-    value::Value& value = value::reference(get(i));
-
-    return value::toMapValue(value);
-}
-
-Matrix& Set::getMatrix(const size_type& i)
-{
-    value::Value& value = value::reference(get(i));
-
-    return value::toMatrixValue(value);
-}
-
-const Set& Set::getSet(const size_type& i) const
-{
-    const value::Value& value = value::reference(get(i));
-
-    return value::toSetValue(value);
-}
-
-const Map& Set::getMap(const size_type& i) const
-{
-    const value::Value& value = value::reference(get(i));
-
-    return value::toMapValue(value);
-}
-
-const Matrix& Set::getMatrix(const size_type& i) const
-{
-    const value::Value& value = value::reference(get(i));
-
-    return value::toMatrixValue(value);
 }
 
 }} // namespace vle value

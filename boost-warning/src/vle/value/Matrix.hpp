@@ -489,68 +489,6 @@ public:
     inline ConstVectorView row(index index) const
     { return m_matrix[boost::indices[Range(0, m_nbcol)][index]]; }
 
-    /**
-     * @brief Return the number of column to add.
-     * @return the number of column to add.
-     */
-    inline size_type resizeColumn() const
-    { return m_stepcol; }
-
-    /**
-     * @brief Update the column to add factor.
-     * @param colstep The number of column to add.
-     */
-    inline void setResizeColumn(size_type colstep)
-    { m_stepcol = (colstep <= 0) ? m_stepcol : colstep; }
-
-    /**
-     * @brief Return the number of row to add.
-     * @return the number of row to add.
-     */
-    inline size_type resizeRow() const
-    { return m_steprow; }
-
-    /**
-     * @brief Update the row to add factor.
-     * @param colrow The number of row to add.
-     */
-    inline void setResizeRow(size_type colrow)
-    { m_steprow = (colrow <= 0) ? m_steprow : colrow; }
-
-    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-      * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-
-
-    /**
-     * @brief Add a Matrix at the end of the Set.
-     * @param column The column.
-     * @param row The row.
-     * @return A reference to the newly allocated Set.
-     */
-    Matrix& addMatrix(const size_type& column, const size_type& row);
-
-    /**
-     * @brief Get a Matrix from the specified index.
-     * @param column The column.
-     * @param row The row.
-     * @return A Matrix.
-     * @throw utils::ArgError if the index 'column' or 'row' are to big (in
-     * debug mode) or if the value at (column, row) is null or is not a Map.
-     */
-    Matrix& getMatrix(const size_type& column, const size_type& row);
-
-    /**
-     * @brief Get a constant Matrix from the specified index.
-     * @param column The column.
-     * @param row The row.
-     * @return A Matrix.
-     * @throw utils::ArgError if the index 'column' or 'row' are to big (in
-     * debug mode) or if the value at (column, row) is null or is not an Matrix.
-     */
-    const Matrix& getMatrix(const size_type& column,
-                            const size_type& row) const;
-
 private:
     MatrixValue m_matrix; /// @brief to store the values.
     Indices m_indices;  /// @brief indices for the matrix.

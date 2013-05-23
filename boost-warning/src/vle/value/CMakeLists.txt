@@ -1,7 +1,7 @@
-add_sources(vlelib  Double.cpp Double.hpp
+add_sources(vlelib 
   Matrix.cpp Matrix.hpp
   Value.cpp Value.hpp)
 
-install(FILES Double.hpp Matrix.hpp
+install(FILES Matrix.hpp
   Value.hpp
   DESTINATION ${VLE_INCLUDE_DIRS}/value)

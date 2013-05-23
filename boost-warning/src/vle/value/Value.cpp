@@ -26,7 +26,6 @@
 
 
 #include <vle/value/Value.hpp>
-#include <vle/value/Double.hpp>
 #include <vle/value/Matrix.hpp>
 #include <sstream>
 
@@ -57,19 +56,6 @@ std::string Value::writeToXml() const
     writeXml(out);
     return out.str();
 }
-
-
-const Double& Value::toDouble() const
-{
-    if (not isDouble()) {
-        throw 1;
-    }
-    return static_cast < const Double& >(*this);
-}
-
-
-
-
 
 const Matrix& Value::toMatrix() const
 {

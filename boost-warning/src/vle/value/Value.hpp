@@ -35,9 +35,6 @@
 namespace vle { namespace value {
 
     class Value;
-    class Double;
-    class String;
-    class Set;
     class Matrix;
 
     /**
@@ -51,7 +48,7 @@ namespace vle { namespace value {
         static unsigned long int deallocated;
 #endif
 
-        enum type {DOUBLE, MAP,
+        enum type {MAP,
             MATRIX };
 
 	/**
@@ -149,8 +146,6 @@ namespace vle { namespace value {
          */
         std::string writeToXml() const;
 
-	inline bool isDouble() const
-	{ return getType() == Value::DOUBLE; }
 
 	inline bool isMap() const
 	{ return getType() == Value::MAP; }
@@ -160,8 +155,6 @@ namespace vle { namespace value {
 	inline bool isMatrix() const
 	{ return getType() == Value::MATRIX; }
 
-        const Double& toDouble() const;
-        const Set& toSet() const;
         const Matrix& toMatrix() const;
 
         /**

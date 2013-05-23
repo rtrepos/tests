@@ -29,7 +29,6 @@
 #define VLE_VALUE_MATRIX_HPP 1
 
 #include <vle/value/Value.hpp>
-#include <vle/value/Double.hpp>
 #include <vle/DllDefines.hpp>
 #include <boost/multi_array.hpp>
 
@@ -521,18 +520,6 @@ public:
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
       * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
      * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-
-    /**
-     * @brief Add a double into the matrix.
-     * @param column The column.
-     * @param row The row.
-     * @param value The value of the double.
-     */
-    void addDouble(const size_type& column, const size_type& row,
-                   const double& value)
-    {
-        add(column, row, new Double(value));
-    }
 
 
     /**

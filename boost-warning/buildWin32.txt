@@ -1,0 +1,22 @@
+
+
+******************************
+** set local variables
+******************************
+
+set PKG_CONFIG_PATH=c:\gtkmm\lib\pkgconfig;C:\MinGW\lib\pkgconfig
+set boostversion=1_53
+set builddir=c:\tests\boost-warning\buildwin
+set sourcedir=c:\tests\boost-warning
+set installdir=c:\tmp\install
+set BOOST_ROOT=c:\natifvle\install\boost
+
+************************************
+** Build vle
+************************************
+cd %builddir%
+cmake.exe -G "MinGW Makefiles" -DWITH_MPI=OFF -DWITH_GTKSOURCEVIEW=OFF -DWITH_DOXYGEN=ON -DCMAKE_INSTALL_PREFIX=%installdir%\vle -DCMAKE_BUILD_TYPE=RelWithDebInfo -DVLE_MINGW_PATH="c:\mingw" -DVLE_GTK_PATH="c:\gtkmm" -DVLE_BOOST_INCLUDE_PATH="%BOOST_ROOT%\include\boost-%boostversion%" -DVLE_BOOST_LIBRARIES_PATH="%BOOST_ROOT%\lib"   %sourcedir%
+
+mingw32-make install
+
+

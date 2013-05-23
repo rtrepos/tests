@@ -30,59 +30,5 @@
 
 #include <vle/DllDefines.hpp>
 
-namespace vle {
-
-/**
- * Initialize the VLE subsystems:
- *
- * - libxml2 library
- * - Glib::thread
- * - VLE's singleton
- *
- * @example
- * int main(int argc, char **argv)
- * {
- *     vle::Init app;
- *
- *     [...]
- *
- * }
- * @endexample
- */
-struct VLE_API Init
-{
-    /**
-     * Initialize all subsystems. Use the default locale according to the
-     * environment variables.
-     *
-     * @code
-     * vle::Init app; // to use the default locale according to the environment
-     *                // variables.
-     * environment variables.
-     * @endcode
-     */
-    Init();
-
-    /**
-     * Initialize all subsystems. Use the @e localname as local for
-     * the current application.
-     *
-     * @code
-     * vle::Init app("POSIX"); // to use the POSIX version.
-     * vle::Init app("C"); // to use the POSIX version.
-     * vle::Init app("fr_FR"); // to switch to the French locale.
-     * vle::Init app(""); // to use the default locale according to the
-     *                    // environment variables.
-     * @endcode
-     */
-    Init(const char *localname);
-
-    /**
-     * Cleanup all subsystems.
-     */
-    ~Init();
-};
-
-}
 
 #endif

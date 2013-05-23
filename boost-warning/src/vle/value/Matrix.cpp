@@ -29,28 +29,5 @@
 
 namespace vle { namespace value {
 
-Matrix::Matrix(index columns, index rows, index columnmax, index rowmax, index
-               resizeColumns, index resizeRows)
-    : m_matrix(m_extents[columnmax][rowmax]), m_nbcol(columns), m_nbrow(rows),
-    m_stepcol(resizeColumns), m_steprow(resizeRows), m_lastX(0), m_lastY(0)
-{
-    if (columns > columnmax) {
-        throw 1;
-    }
-
-    if (rows > rowmax) {
-        throw 1;
-    }
-}
-
-
-
-void Matrix::resize(const size_type& columns, const size_type& rows)
-{
-    m_matrix.resize(m_extents[columns][rows]);
-}
-
-
-
 }} // namespace vle value
 

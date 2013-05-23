@@ -75,16 +75,21 @@ public:
     typedef MatrixValue::iterator iterator;
     typedef MatrixValue::const_iterator const_iterator;
 
-    Matrix(index columns, index rows, index columnmax, index rowmax,
-           index resizeColumns, index resizeRow);
+    Matrix()
+        : m_matrix(m_extents[1][1])
+    {
 
+    }
 
     virtual ~Matrix()
     {
 
     }
 
-    void resize(const size_type& columns, const size_type& rows);
+    void resize()
+    {
+      m_matrix.resize(m_extents[1][1]);
+    }
 
 
 
@@ -96,14 +101,8 @@ public:
 
 private:
     MatrixValue m_matrix; /// @brief to store the values.
-    Indices m_indices;  /// @brief indices for the matrix.
     Extents m_extents; /// @brief to extents matrix.
-    size_type m_nbcol;  /// @brief to store the column number.
-    size_type m_nbrow;  /// @brief to store the row number.
-    size_type m_stepcol; /// @brief the column when resize.
-    size_type m_steprow; /// @brief the row when resize.
-    size_type m_lastX; /// @brief the last columns set.
-    size_type m_lastY; /// @brief the last row set.
+
 };
 
 

@@ -1,3 +1,0 @@
-INSTALL(DIRECTORY package DESTINATION "${VLE_SHARE_DIRS}/template")
-
-INSTALL(FILES unittest.vpz DESTINATION "${VLE_SHARE_DIRS}/template")

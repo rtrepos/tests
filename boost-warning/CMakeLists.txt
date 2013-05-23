@@ -29,10 +29,6 @@ set(VLE_INCLUDE_DIR "include/vle-${VLE_VERSION_SHORT}")
 set(VLE_MANPAGE_PATH "share/man/man1")
 set(VLE_SHARE_DIRS "share/vle-${VLE_VERSION_SHORT}")
 
-#
-# CPack configuration
-#
-include(CMakeCPack.cmake)
 
 #
 # CMake modules
@@ -238,35 +234,6 @@ function(add_sources target)
   endforeach()
   set_property(GLOBAL APPEND PROPERTY "${target}_SRCS" "${SRCS}")
 endfunction()
-
-#
-# Browse the share subdirectory
-#
-add_subdirectory(share)
-
-#
-# Gettext utilities
-#
-find_package(Gettext)
-if (GETTEXT_FOUND)
-  set(VLE_HAVE_NLS 1 CACHE INTERNAL "" FORCE)
-  add_subdirectory(i18n)
-else (GETTEXT_FOUND)
-  set(VLE_HAVE_NLS 0 CACHE INTERNAL "" FORCE)
-endif (GETTEXT_FOUND)
-
-#
-# Generating documentation with doxygen
-#
-option(WITH_DOXYGEN "build the documentation with doxygen [default: off]" OFF)
-if (WITH_DOXYGEN)
-  find_package(Doxygen)
-  if (DOXYGEN)
-    add_subdirectory(doxygen)
-  else (DOXYGEN)
-    message(STATUS "WARNING: Doxygen not found - No reference manual create")
-  endif (DOXYGEN)
-endif (WITH_DOXYGEN)
 
 #
 # Browse the src subdirectory

@@ -164,11 +164,7 @@ public:
      */
     const Value* get(const size_type& column, const size_type& row) const
     {
-#ifndef NDEBUG
-        if (not (column < m_nbcol and row <= m_nbrow)) {
-            throw 1;
-        }
-#endif
+
 
         return m_matrix[column][row];
     }
@@ -182,11 +178,6 @@ public:
      */
     Value* get(const size_type& column, const size_type& row)
     {
-#ifndef NDEBUG
-        if (not (column < m_nbcol and row <= m_nbrow)) {
-            throw 1;
-        }
-#endif
         return m_matrix[column][row];
     }
 

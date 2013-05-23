@@ -34,8 +34,6 @@
 
 namespace vle { namespace value {
 
-    class Value;
-    class Matrix;
 
     /**
      * @brief Virtual class to assign Value into Event object.
@@ -55,15 +53,6 @@ namespace vle { namespace value {
 	Value()
         {
         }
-
-        /**
-         * @brief Copy constructor. In subclass, all datas are cloned.
-         * @param value The value to clone;
-         */
-        Value(const Value& /* value */)
-        {
-        }
-
         /**
 	 * @brief Nothing to delete.
 	 */

@@ -36,26 +36,6 @@ unsigned long int Value::allocated = 0;
 unsigned long int Value::deallocated = 0;
 #endif
 
-std::string Value::writeToFile() const
-{
-    std::ostringstream out;
-    writeFile(out);
-    return out.str();
-}
-
-std::string Value::writeToString() const
-{
-    std::ostringstream out;
-    writeString(out);
-    return out.str();
-}
-
-std::string Value::writeToXml() const
-{
-    std::ostringstream out;
-    writeXml(out);
-    return out.str();
-}
 
 const Matrix& Value::toMatrix() const
 {

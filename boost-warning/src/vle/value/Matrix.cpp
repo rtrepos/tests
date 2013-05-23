@@ -60,60 +60,6 @@ Matrix::Matrix(const Matrix& m)
     }
 }
 
-void Matrix::writeFile(std::ostream& out) const
-{
-    for (size_type j = 0; j < m_nbrow; ++j) {
-        for (size_type i = 0; i < m_nbcol; ++i) {
-            if (m_matrix[i][j]) {
-                m_matrix[i][j]->writeFile(out);
-            } else {
-                out << "NA";
-            }
-            out << " ";
-        }
-        out << "\n";
-    }
-}
-
-void Matrix::writeString(std::ostream& out) const
-{
-    for (size_type j = 0; j < m_nbrow; ++j) {
-        for (size_type i = 0; i < m_nbcol; ++i) {
-            if (m_matrix[i][j]) {
-                m_matrix[i][j]->writeString(out);
-            } else {
-                out << "NA";
-            }
-            out << " ";
-        }
-        out << "\n";
-    }
-}
-
-void Matrix::writeXml(std::ostream& out) const
-{
-    out << "<matrix "
-        << "rows=\"" << m_nbrow  << "\" "
-        << "columns=\"" << m_nbcol << "\" "
-        << "columnmax=\"" << m_matrix.shape()[0] << "\" "
-        << "rowmax=\"" << m_matrix.shape()[1] << "\" "
-        << "columnstep=\"" << m_stepcol << "\" "
-        << "rowstep=\"" << m_steprow << "\" >";
-
-    for (size_type j = 0; j < m_nbrow; ++j) {
-        for (size_type i = 0; i < m_nbcol; ++i) {
-            if (m_matrix[i][j]) {
-                m_matrix[i][j]->writeXml(out);
-            } else {
-                out << "<null />";
-            }
-            out << " ";
-        }
-        out << "\n";
-    }
-    out << "</matrix>";
-}
-
 void Matrix::clear()
 {
     for (size_type j = 0; j < m_nbrow; ++j) {

@@ -563,30 +563,6 @@ private:
     size_type m_lastY; /// @brief the last row set.
 };
 
-/**
- * @brief A functor to test is a Value is a Matrix. To use with algorithms
- * of test.
- */
-struct VLE_API IsMatrixValue
-{
-    bool operator()(const value::Value& value) const
-    { return value.getType() == Value::MATRIX; }
-
-    bool operator()(const value::Value* value) const
-    { return value and value->getType() == Value::MATRIX; }
-};
-
-inline const Matrix& toMatrixValue(const Value& value)
-{ return value.toMatrix(); }
-
-inline const Matrix* toMatrixValue(const Value* value)
-{ return value ? &value->toMatrix() : 0; }
-
-
-
-inline ConstMatrixView toMatrix(const Value& value)
-{ return value.toMatrix().value(); }
-
 
 }} // namespace vle value
 

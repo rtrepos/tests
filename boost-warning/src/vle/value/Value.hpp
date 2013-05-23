@@ -39,7 +39,6 @@ namespace vle { namespace value {
     class String;
     class Set;
     class Map;
-    class Table;
     class Matrix;
 
     /**
@@ -53,7 +52,7 @@ namespace vle { namespace value {
         static unsigned long int deallocated;
 #endif
 
-        enum type {DOUBLE, SET, MAP, TABLE,
+        enum type {DOUBLE, SET, MAP,
             MATRIX };
 
 	/**
@@ -161,8 +160,6 @@ namespace vle { namespace value {
 	{ return getType() == Value::MAP; }
 
 
-	inline bool isTable() const
-	{ return getType() == Value::TABLE; }
 
 	inline bool isMatrix() const
 	{ return getType() == Value::MATRIX; }
@@ -170,7 +167,6 @@ namespace vle { namespace value {
         const Double& toDouble() const;
         const Set& toSet() const;
         const Map& toMap() const;
-        const Table& toTable() const;
         const Matrix& toMatrix() const;
 
         /**

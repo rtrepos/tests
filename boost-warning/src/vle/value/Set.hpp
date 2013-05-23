@@ -30,7 +30,6 @@
 
 #include <vle/value/Value.hpp>
 #include <vle/value/Double.hpp>
-#include <vle/value/Table.hpp>
 #include <vle/DllDefines.hpp>
 #include <vector>
 
@@ -378,13 +377,6 @@ public:
     { m_value.push_back(new Double(value)); }
 
 
-    /**
-     * @brief Add an Table into the set.
-     * @param value
-     */
-    void addTable(const Table::size_type& width = 0,
-                  const Table::size_type& height = 0)
-    { m_value.push_back(new Table(width, height)); }
     /**
      * @brief Add a Set at the end of the Set.
      * @return A reference to the newly allocated Set.

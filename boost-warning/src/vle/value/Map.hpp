@@ -30,7 +30,6 @@
 
 #include <vle/value/Value.hpp>
 #include <vle/value/Double.hpp>
-#include <vle/value/Table.hpp>
 #include <vle/DllDefines.hpp>
 #include <map>
 

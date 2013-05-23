@@ -30,7 +30,6 @@
 
 #include <vle/value/Value.hpp>
 #include <vle/value/Double.hpp>
-#include <vle/value/Table.hpp>
 #include <vle/DllDefines.hpp>
 #include <boost/multi_array.hpp>
 
@@ -536,23 +535,6 @@ public:
     }
 
 
-
-    /**
-     * @brief Add a Table into the Matrix.
-     * @param column The column.
-     * @param row The row.
-     * @param width The width of the newly allocated Table.
-     * @param height The height of the newly allocated Table.
-     * @return A reference to the allocated Table.
-     */
-    Table& addTable(const size_type& column, const size_type& row,
-                    const Table::size_type& width = 0,
-                    const Table::size_type& height = 0)
-    {
-        value::Table* table = new Table(width, height);
-        add(column, row, table);
-        return *table;
-    }
 
 
     /**

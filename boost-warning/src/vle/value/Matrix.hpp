@@ -29,7 +29,6 @@
 #define VLE_VALUE_MATRIX_HPP 1
 
 #include <vle/value/Value.hpp>
-#include <vle/DllDefines.hpp>
 #include <boost/multi_array.hpp>
 
 namespace vle { namespace value {
@@ -54,7 +53,7 @@ typedef MatrixValue::const_array_view < 2 >::type ConstMatrixView;
  * Boost library (http://www.boost.org) class of two dimension of
  * value::Value.
  */
-class VLE_API Matrix : public Value
+class __declspec(dllexport) Matrix : public Value
 {
 public:
     /// Define indices of Matrix.

@@ -28,8 +28,6 @@
 #ifndef VLE_VALUE_VALUE_HPP
 #define VLE_VALUE_VALUE_HPP 1
 
-#include <vle/version.hpp>
-#include <vle/DllDefines.hpp>
 #include <ostream>
 
 namespace vle { namespace value {
@@ -38,7 +36,7 @@ namespace vle { namespace value {
     /**
      * @brief Virtual class to assign Value into Event object.
      */
-    class VLE_API Value
+    class __declspec(dllexport) Value
     {
     public:
 

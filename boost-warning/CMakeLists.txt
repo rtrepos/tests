@@ -92,5 +92,5 @@ endif (Boost_MINOR_VERSION AND ${Boost_MINOR_VERSION} LESS "41")
 include_directories(
   ${Boost_INCLUDE_DIRS})
 
-add_library(vlelib SHARED Matrix.cpp Matrix.hpp)
+add_library(vlelib SHARED Matrix.cpp)
 

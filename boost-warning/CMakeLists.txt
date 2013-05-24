@@ -41,15 +41,6 @@ if (CMAKE_COMPILER_IS_GNUCC AND CMAKE_COMPILER_IS_GNUCXX)
   endif ()
 endif ()
 
-#
-# Check libraries with pkgconfig
-#
-find_package(PkgConfig REQUIRED)
-
-# FIXME use old-style link directories for now
-if (COMMAND CMAKE_POLICY)
-  cmake_policy(SET CMP0003 OLD)
-endif (COMMAND CMAKE_POLICY)
 
 #
 # Test the libboost header and libboost-text library.
@@ -95,47 +86,11 @@ else (Boost_MINOR_VERSION AND ${Boost_MINOR_VERSION} LESS "41")
   set(VLE_HAVE_BOOST_SPIRIT2 1 CACHE INTERNAL "" FORCE)
 endif (Boost_MINOR_VERSION AND ${Boost_MINOR_VERSION} LESS "41")
 
-if (WITH_TEST)
-  if (Boost_UNIT_TEST_FRAMEWORK_FOUND)
-    set(VLE_HAVE_UNITTESTFRAMEWORK 1 CACHE INTERNAL "" FORCE)
-  endif (Boost_UNIT_TEST_FRAMEWORK_FOUND)
-endif (WITH_TEST)
-
-
-#
-# Generate the config.h
-#
-check_include_file_cxx(cxxabi.h VLE_HAVE_GCC_ABI_DEMANGLE)
-check_include_file_cxx(execinfo.h VLE_HAVE_EXECINFO)
-check_include_file_cxx(signal.h VLE_HAVE_SIGNAL)
-include_directories(${VLE_BINARY_DIR})
-
-
-
-#
-# Add sources for a target
-# add_sources(<target> <source1> [<source2> ...])
-#
-function(add_sources target)
-  get_property(prop_defined GLOBAL PROPERTY ${target}_SRCS DEFINED)
-  if(NOT prop_defined)
-    define_property(GLOBAL PROPERTY ${target}_SRCS
-      BRIEF_DOCS "Sources for the ${target} target"
-      FULL_DOCS "List of source files for the ${target} target")
-  endif()
-
-  set(SRCS)
-  foreach(src ${ARGN})
-    if(NOT IS_ABSOLUTE "${src}")
-      get_filename_component(src "${src}" ABSOLUTE)
-    endif()
-    list(APPEND SRCS "${src}")
-  endforeach()
-  set_property(GLOBAL APPEND PROPERTY "${target}_SRCS" "${SRCS}")
-endfunction()
-
 #
 # Browse the src subdirectory
 #
-ADD_SUBDIRECTORY(src)
+include_directories(
+  ${Boost_INCLUDE_DIRS})
+
+add_library(vlelib SHARED Matrix.cpp Matrix.hpp)
 

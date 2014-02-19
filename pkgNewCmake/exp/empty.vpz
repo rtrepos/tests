@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE vle_project PUBLIC "-//VLE TEAM//DTD Strict//EN" "http://www.vle-project.org/vle-1.1.0.dtd">
+<vle_project version="1.0" date="2014-Feb-19 18:49:53" author="Gauthier Quesnel">
+<structures>
+<model name="Top model" type="coupled" x="0" y="0" width="1180" height="501"  >
+<submodels>
+<model name="zedze" type="atomic" conditions="cond_DE_zedze" dynamics="" observables="obs_DE_zedze" x="103" y="114" width="100" height="60" >
+<in>
+ <port name="perturb" />
+ <port name="update" />
+</in>
+<out>
+ <port name="A" />
+</out>
+</model>
+</submodels>
+<connections>
+</connections>
+</model>
+</structures>
+<dynamics>
+<dynamic name="ezfe" library="EDED" package="pkgNewCmake"  />
+</dynamics>
+<experiment name="test"  >
+<conditions>
+<condition name="cond_DE_zedze" >
+ <port name="mode" >
+<string>name</string>
+</port>
+ <port name="time-step" >
+<double>1.000000000000000</double>
+</port>
+ <port name="variables" >
+<set><set><string>A</string></set></set>
+</port>
+</condition>
+<condition name="simulation_engine" >
+ <port name="begin" >
+<double>0.000000000000000</double>
+</port>
+ <port name="duration" >
+<double>1.000000000000000</double>
+</port>
+</condition>
+</conditions>
+<views>
+<observables>
+<observable name="obs_DE_zedze" >
+<port name="A" />
+
+</observable>
+
+</observables>
+</views>
+</experiment>
+</vle_project>
